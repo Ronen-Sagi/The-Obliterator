@@ -10,8 +10,9 @@ public class Movment : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float maxMoveSpeed = 5f;
     [SerializeField] private float friction = 5f;
-    
+
     private Rigidbody2D rb;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,9 +21,8 @@ public class Movment : MonoBehaviour
         left.AddBinding("<Keyboard>/a");
         right.AddBinding("<Keyboard>/d");
         rb = GetComponent<Rigidbody2D>();
-        
     }
-    
+
     private void OnEnable()
     {
         up.Enable();
@@ -30,7 +30,7 @@ public class Movment : MonoBehaviour
         left.Enable();
         right.Enable();
     }
-    
+
     private void OnDisable()
     {
         up.Disable();
@@ -47,20 +47,20 @@ public class Movment : MonoBehaviour
         {
             rb.AddForce(Vector2.up * moveSpeed, ForceMode2D.Impulse);
         }
+
         if (down.IsPressed() && rb.linearVelocity.y > -maxMoveSpeed)
         {
             rb.AddForce(Vector2.down * moveSpeed, ForceMode2D.Impulse);
         }
+
         if (left.IsPressed() && rb.linearVelocity.x > -maxMoveSpeed)
         {
             rb.AddForce(Vector2.left * moveSpeed, ForceMode2D.Impulse);
         }
+
         if (right.IsPressed() && rb.linearVelocity.x < maxMoveSpeed)
         {
             rb.AddForce(Vector2.right * moveSpeed, ForceMode2D.Impulse);
         }
-        
     }
-
-
 }
