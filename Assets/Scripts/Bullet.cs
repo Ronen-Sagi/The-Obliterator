@@ -2,22 +2,17 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float bulletSpeed = 10f;
+    public float speed = 20f;  
 
-    [SerializeField] private GameObject cannon;
-    private Rigidbody2D rb;
+    private Vector2 direction;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void Initialize(Vector2 dir)
     {
-        rb = GetComponent<Rigidbody2D>();
-        Vector2 shootDirection = cannon.transform.right;
-        rb.linearVelocity = shootDirection * bulletSpeed;
+        direction = dir;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        transform.position += (Vector3)direction * speed * Time.deltaTime;
     }
 }
