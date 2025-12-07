@@ -21,7 +21,8 @@ public class CannonShoot : MonoBehaviour
 
         // Get mouse world position
         Vector3 mousePos = Mouse.current.position.ReadValue();
-        Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, -Camera.main.transform.position.z)
+        Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(
+            new Vector3(mousePos.x, mousePos.y, -Camera.main.transform.position.z)
         );
 
         // Calculate direction

@@ -3,7 +3,9 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     private GameObject player;
+
     [SerializeField] private float moveSpeed = 2f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,6 +18,5 @@ public class EnemyMovement : MonoBehaviour
         Vector2 direction = player.transform.position - transform.position;
         direction.Normalize();
         transform.position += (Vector3)direction * moveSpeed * Time.deltaTime;
-        
     }
 }
