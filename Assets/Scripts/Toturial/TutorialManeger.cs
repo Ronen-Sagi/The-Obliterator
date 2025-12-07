@@ -1,65 +1,119 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class TutorialManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI instructionText;
+    [SerializeField] private List<GameObject> tutorialDots = new List<GameObject>();
+    [SerializeField] private List<GameObject> tutorialEnemies = new List<GameObject>();
+    [SerializeField] private List<string> instructions = new List<string>();
     
-    [SerializeField] private GameObject dot1;
-    [SerializeField] private GameObject dot2;
-    
-    [SerializeField] private GameObject tutorialEnemy;
-    
-    [SerializeField] private GameObject player;
-    
+    private int currentDotIndex = 0;
+    private int currentEnemyIndex = 0;
     private int currentStep = 0;
+    private int totalDots = 0;
+    private int totalEnemies = 0;
 
     void Start()
     {
-        instructionText.text = "Welcome!  Use WASD keys to move your character.\nTouch the dot to continue. ";
+        totalDots = tutorialDots.Count;
+        totalEnemies = tutorialEnemies.Count;
         
-        dot1. SetActive(true);
-        dot2.SetActive(false);
-        
-        if (tutorialEnemy != null)
+        for (int i = 0; i < totalDots; i++)
         {
-            tutorialEnemy.SetActive(false);
+            tutorialDots[i].SetActive(i == 0);
+        }
+        
+        foreach (GameObject enemy in tutorialEnemies)
+        {
+            enemy.SetActive(false);
+        }
+        
+        if (instructions.Count > 0)
+        {
+            instructionText.text = instructions[0];
         }
     }
     
     public void OnDotTouched(int dotNumber)
     {
-        if (dotNumber == 1 && currentStep == 0)
+        if (dotNumber == currentDotIndex + 1 && currentStep == currentDotIndex)
         {
-            currentStep = 1;
-            dot2.SetActive(true);
-            instructionText.text = "Great! Now move to the second dot.";
-        }
-        else if (dotNumber == 2 && currentStep == 1)
-        {
-            // Second dot touched - start shooting tutorial
-            currentStep = 2;
-            instructionText.text = "Now let's learn to shoot!\nAim with the mouse and click the left button to shoot at the enemy.";
+            currentDotIndex++;
+            currentStep++;
             
-            if (tutorialEnemy != null)
+            if (currentDotIndex < totalDots)
             {
-                tutorialEnemy.SetActive(true);
+                tutorialDots[currentDotIndex].SetActive(true);
+                
+                if (currentStep < instructions.Count)
+                {
+                    instructionText. text = instructions[currentStep];
+                }
             }
+            else
+            {
+                StartEnemyTutorial();
+            }
+        }
+    }
+
+    private void StartEnemyTutorial()
+    {
+        if (totalEnemies > 0)
+        {
+            tutorialEnemies[0].SetActive(true);
+            
+            int instructionIndex = totalDots + currentEnemyIndex;
+            if (instructionIndex < instructions.Count)
+            {
+                instructionText.text = instructions[instructionIndex];
+            }
+        }
+        else
+        {
+            CompleteTutorial();
         }
     }
     
     public void OnEnemyDestroyed()
     {
-        if (currentStep == 2)
+        currentEnemyIndex++;
+        currentStep++;
+        
+        if (currentEnemyIndex < totalEnemies)
         {
-            currentStep = 3;
-            instructionText.text = "Great job! Tutorial complete.\nLoading game...";
-            //LoadMainGame();
+            tutorialEnemies[currentEnemyIndex].SetActive(true);
+            
+            int instructionIndex = totalDots + currentEnemyIndex;
+            if (instructionIndex < instructions. Count)
+            {
+                instructionText.text = instructions[instructionIndex];
+            }
+        }
+        else
+        {
+            CompleteTutorial();
         }
     }
 
-    private void LoadMainGame()
+    private void CompleteTutorial()
+    {
+        if (instructions.Count > totalDots + totalEnemies)
+        {
+            instructionText.text = instructions[totalDots + totalEnemies];
+        }
+        else
+        {
+            instructionText.text = "Tutorial complete\n";
+        }
+
+        //LoadNextScene();
+    }
+
+    private void LoadNextScene()
     {
         SceneManager.LoadScene("MainScene");
     }

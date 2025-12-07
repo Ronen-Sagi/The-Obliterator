@@ -855,6 +855,93 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &680837841
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3142455233973040997, guid: 434e44f864e704c419c985b2620cfcd6, type: 3}
+      propertyPath: m_Name
+      value: TutorialEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142455233973040997, guid: 434e44f864e704c419c985b2620cfcd6, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3235333666039899743, guid: 434e44f864e704c419c985b2620cfcd6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 3235333666039899743, guid: 434e44f864e704c419c985b2620cfcd6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3235333666039899743, guid: 434e44f864e704c419c985b2620cfcd6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3235333666039899743, guid: 434e44f864e704c419c985b2620cfcd6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3235333666039899743, guid: 434e44f864e704c419c985b2620cfcd6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3235333666039899743, guid: 434e44f864e704c419c985b2620cfcd6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3235333666039899743, guid: 434e44f864e704c419c985b2620cfcd6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3235333666039899743, guid: 434e44f864e704c419c985b2620cfcd6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3235333666039899743, guid: 434e44f864e704c419c985b2620cfcd6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3235333666039899743, guid: 434e44f864e704c419c985b2620cfcd6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5405930377924044648, guid: 434e44f864e704c419c985b2620cfcd6, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -3999020465886895434, guid: 434e44f864e704c419c985b2620cfcd6, type: 3}
+    - {fileID: 6428549848938970350, guid: 434e44f864e704c419c985b2620cfcd6, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3142455233973040997, guid: 434e44f864e704c419c985b2620cfcd6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 719198957}
+  m_SourcePrefab: {fileID: 100100000, guid: 434e44f864e704c419c985b2620cfcd6, type: 3}
+--- !u!1 &719198956 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3142455233973040997, guid: 434e44f864e704c419c985b2620cfcd6, type: 3}
+  m_PrefabInstance: {fileID: 680837841}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &719198957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719198956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f9a615392d8e4175bca1d4d1768fe3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &1230715890
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,9 +1138,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   instructionText: {fileID: 480728817}
-  dot1: {fileID: 92252074}
-  dot2: {fileID: 1719700517}
-  player: {fileID: 1823186758}
+  tutorialDots:
+  - {fileID: 92252074}
+  - {fileID: 1719700517}
+  tutorialEnemies:
+  - {fileID: 719198956}
+  instructions:
+  - '"Use WASD keys to move your character.\n Touch the dot to continue"'
+  - '"Great! Now move to the socond dot"'
+  - '"Now let''s learn to shoot!\n Aim with the mouse and click on the left button
+    to shoot at the enemy"'
+  - '"temporary text"'
+  nextSceneName: SampleScene
+  delayBeforeLoadingScene: 2
 --- !u!4 &1647075314
 Transform:
   m_ObjectHideFlags: 0
@@ -1100,7 +1197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11420599fc8ee4acfb4991706e194296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  dotNum: 2
+  dotNum: 1
   tutorialManager: {fileID: 1647075313}
 --- !u!58 &1719700519
 CircleCollider2D:
@@ -1488,3 +1585,4 @@ SceneRoots:
   - {fileID: 2130120535}
   - {fileID: 485775692}
   - {fileID: 1647075314}
+  - {fileID: 680837841}
