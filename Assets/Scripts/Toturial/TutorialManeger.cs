@@ -21,6 +21,8 @@ public class TutorialManager : MonoBehaviour
     private int totalEnemies = 0;
     private bool powerUpAvaliable = false;
     private bool powerUpUsed = false;
+    private int enemiesKilled = 0;
+    private bool finalWave = false;
 
     void Start()
     {
@@ -81,10 +83,6 @@ public class TutorialManager : MonoBehaviour
                 instructionText.text = instructions[instructionIndex];
             }
         }
-        else
-        {
-            CompleteTutorial();
-        }
     }
     public void OnEnemyDestroyed()
     {
@@ -104,11 +102,27 @@ public class TutorialManager : MonoBehaviour
         }
         else
         {
-            //CompleteTutorial();
             powerUpAvaliable = true;
             instructionText.text = "Now let's activate your power up\\n Press the space button to activate your speed boost";
         }
     }
+    
+    public void OnRealEnemyDestroyed()
+    {
+        if (finalWave)
+        {
+            enemiesKilled++;
+            instructionText.text = $"Enemies killed: {enemiesKilled}/10";
+            
+            if (enemiesKilled >= 10)
+            {
+                instructionText.text = "Excellent! Tutorial Complete!";
+                Invoke(nameof(ReturnToMenu), 2f);
+            }
+        }
+    }
+
+    
 
     private void Update()
     {
@@ -138,28 +152,28 @@ public class TutorialManager : MonoBehaviour
 
     private void SpawnEnemies()
     {
+        finalWave = true;
+        enemiesKilled = 0;
         for (int i = 0; i < 10; i++)
         {
             Vector3 spawnPosition;
-            
-            // If spawn positions are defined, use them (cycling through if more enemies than positions)
             if (enemySpawnPositions.Count > 0)
             {
                 spawnPosition = enemySpawnPositions[i % enemySpawnPositions.Count]. position;
             }
             else
             {
-                // Otherwise spawn randomly around the edges of the screen
                 spawnPosition = GetRandomSpawnPosition();
             }
             
-            Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            
+            // Add a component to track when this enemy is destroyed
+            TutorialRealEnemy realEnemyScript = enemy.AddComponent<TutorialRealEnemy>();
+            realEnemyScript.tutorialManager = this;
         }
         
-        instructionText.text = "Survive! ";
-        
-        // Complete tutorial after some time
-        Invoke(nameof(CompleteTutorial), 10f);
+        instructionText.text = "Enemies killed: 0/10";
     }
 
     private Vector3 GetRandomSpawnPosition()
@@ -192,6 +206,11 @@ public class TutorialManager : MonoBehaviour
     private void LoadNextScene()
     {
         SceneManager. LoadScene("MainScene");
+    }
+    
+    private void ReturnToMenu()
+    {
+        SceneManager.LoadScene("MenuScene");
     }
     
     private void OnDisable()
