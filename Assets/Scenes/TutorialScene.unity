@@ -1144,13 +1144,11 @@ MonoBehaviour:
   tutorialEnemies:
   - {fileID: 719198956}
   instructions:
-  - '"Use WASD keys to move your character.\n Touch the dot to continue"'
-  - '"Great! Now move to the socond dot"'
-  - '"Now let''s learn to shoot!\n Aim with the mouse and click on the left button
-    to shoot at the enemy"'
+  - Use WASD keys to move your character.\n Touch the dot to continue
+  - Great! Now move to the socond dot
+  - Now let's learn to shoot!\n Aim with the mouse and click on the left button to
+    shoot at the enemy
   - '"temporary text"'
-  nextSceneName: SampleScene
-  delayBeforeLoadingScene: 2
 --- !u!4 &1647075314
 Transform:
   m_ObjectHideFlags: 0

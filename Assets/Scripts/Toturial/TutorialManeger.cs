@@ -39,26 +39,28 @@ public class TutorialManager : MonoBehaviour
     
     public void OnDotTouched(int dotNumber)
     {
-        if (dotNumber == currentDotIndex + 1 && currentStep == currentDotIndex)
+        Debug.Log($"Dot touched: {dotNumber}, currentDotIndex: {currentDotIndex}");
+        if (dotNumber == currentDotIndex + 1)
         {
             currentDotIndex++;
             currentStep++;
-            
             if (currentDotIndex < totalDots)
             {
                 tutorialDots[currentDotIndex].SetActive(true);
-                
                 if (currentStep < instructions.Count)
                 {
-                    instructionText. text = instructions[currentStep];
+                    instructionText.text = instructions[currentStep];
                 }
-            }
-            else
-            {
-                StartEnemyTutorial();
+                Debug.Log($"Next dot activated: {currentDotIndex}");
             }
         }
+        else
+        {
+            StartEnemyTutorial();
+        }
     }
+
+
 
     private void StartEnemyTutorial()
     {
@@ -67,7 +69,7 @@ public class TutorialManager : MonoBehaviour
             tutorialEnemies[0].SetActive(true);
             
             int instructionIndex = totalDots + currentEnemyIndex;
-            if (instructionIndex < instructions.Count)
+            if (instructionIndex < instructions. Count)
             {
                 instructionText.text = instructions[instructionIndex];
             }
@@ -88,9 +90,9 @@ public class TutorialManager : MonoBehaviour
             tutorialEnemies[currentEnemyIndex].SetActive(true);
             
             int instructionIndex = totalDots + currentEnemyIndex;
-            if (instructionIndex < instructions. Count)
+            if (instructionIndex < instructions.Count)
             {
-                instructionText.text = instructions[instructionIndex];
+                instructionText. text = instructions[instructionIndex];
             }
         }
         else
@@ -107,7 +109,7 @@ public class TutorialManager : MonoBehaviour
         }
         else
         {
-            instructionText.text = "Tutorial complete\n";
+            instructionText.text = "Tutorial complete!\n";
         }
 
         //LoadNextScene();
@@ -115,6 +117,6 @@ public class TutorialManager : MonoBehaviour
 
     private void LoadNextScene()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager. LoadScene("MainScene");
     }
 }
