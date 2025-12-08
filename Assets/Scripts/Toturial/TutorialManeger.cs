@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -9,17 +10,24 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private List<GameObject> tutorialDots = new List<GameObject>();
     [SerializeField] private List<GameObject> tutorialEnemies = new List<GameObject>();
     [SerializeField] private List<string> instructions = new List<string>();
+    [SerializeField] private InputAction spaceKey = new InputAction(type: InputActionType.Button);
+
     
     private int currentDotIndex = 0;
     private int currentEnemyIndex = 0;
     private int currentStep = 0;
     private int totalDots = 0;
     private int totalEnemies = 0;
+    private bool powerUpAvaliable = false;
+    private bool powerUpUsed = false;
 
     void Start()
     {
         totalDots = tutorialDots.Count;
         totalEnemies = tutorialEnemies.Count;
+        
+        spaceKey.AddBinding("<Keyboard>/space");
+        spaceKey.Enable();
         
         for (int i = 0; i < totalDots; i++)
         {
@@ -59,9 +67,6 @@ public class TutorialManager : MonoBehaviour
             StartEnemyTutorial();
         }
     }
-
-
-
     private void StartEnemyTutorial()
     {
         if (totalEnemies > 0)
@@ -79,25 +84,47 @@ public class TutorialManager : MonoBehaviour
             CompleteTutorial();
         }
     }
-    
     public void OnEnemyDestroyed()
     {
         currentEnemyIndex++;
         currentStep++;
+        int instructionIndex = totalDots;
         
         if (currentEnemyIndex < totalEnemies)
         {
             tutorialEnemies[currentEnemyIndex].SetActive(true);
             
-            int instructionIndex = totalDots + currentEnemyIndex;
+            instructionIndex += currentEnemyIndex;
             if (instructionIndex < instructions.Count)
             {
-                instructionText. text = instructions[instructionIndex];
+                instructionText.text = instructions[instructionIndex];
             }
         }
         else
         {
-            CompleteTutorial();
+            //CompleteTutorial();
+            powerUpAvaliable = true;
+            instructionText.text = "Now let's activate your power up\\n Press the space button to activate your speed boost";
+        }
+    }
+
+    private void Update()
+    {
+        if (powerUpAvaliable && !powerUpUsed && spaceKey.WasPerformedThisFrame())
+        {
+            powerUpUsed = true;
+            ActivateSpeedPowerUp();
+        }
+    }
+
+    private void ActivateSpeedPowerUp()
+    {
+        Movment playerMovement = FindObjectOfType<Movment>();
+        if (playerMovement != null)
+        {
+            playerMovement.ActivateSpeedBoost(5f);
+            instructionText.text = "Speed boost activated!";
+            //Invoke(nameof(CompleteTutorial), 5.5f);
         }
     }
 
