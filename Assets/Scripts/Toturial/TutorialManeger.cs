@@ -14,7 +14,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private List<Transform> enemySpawnPositions = new List<Transform>();
     [SerializeField] private TutorialKillCounter killCounter;
-    
+
     private int currentDotIndex = 0;
     private int currentEnemyIndex = 0;
     private int currentStep = 0;
@@ -27,27 +27,27 @@ public class TutorialManager : MonoBehaviour
     {
         totalDots = tutorialDots.Count;
         totalEnemies = tutorialEnemies.Count;
-        
+
         spaceKey.AddBinding("<Keyboard>/space");
         spaceKey.Enable();
-        
+
         for (int i = 0; i < totalDots; i++)
         {
             tutorialDots[i].SetActive(i == 0);
         }
-        
+
         foreach (GameObject enemy in tutorialEnemies)
         {
             enemy.SetActive(false);
         }
-        
+
         if (instructions.Count > 0)
         {
             instructionText.text = instructions[0];
         }
     }
-    
-    
+
+
     public void OnDotTouched(int dotNumber)
     {
         Debug.Log($"Dot touched: {dotNumber}, currentDotIndex: {currentDotIndex}");
@@ -62,6 +62,7 @@ public class TutorialManager : MonoBehaviour
                 {
                     instructionText.text = instructions[currentStep];
                 }
+
                 Debug.Log($"Next dot activated: {currentDotIndex}");
             }
         }
@@ -70,29 +71,31 @@ public class TutorialManager : MonoBehaviour
             StartEnemyTutorial();
         }
     }
+
     private void StartEnemyTutorial()
     {
         if (totalEnemies > 0)
         {
             tutorialEnemies[0].SetActive(true);
-            
+
             int instructionIndex = totalDots + currentEnemyIndex;
-            if (instructionIndex < instructions. Count)
+            if (instructionIndex < instructions.Count)
             {
                 instructionText.text = instructions[instructionIndex];
             }
         }
     }
+
     public void OnEnemyDestroyed()
     {
         currentEnemyIndex++;
         currentStep++;
         int instructionIndex = totalDots;
-        
+
         if (currentEnemyIndex < totalEnemies)
         {
             tutorialEnemies[currentEnemyIndex].SetActive(true);
-            
+
             instructionIndex += currentEnemyIndex;
             if (instructionIndex < instructions.Count)
             {
@@ -102,7 +105,8 @@ public class TutorialManager : MonoBehaviour
         else
         {
             powerUpAvaliable = true;
-            instructionText.text = "Now let's activate your power up\\n Press the space button to activate your speed boost";
+            instructionText.text =
+                "Now let's activate your power up\\n Press the space button to activate your speed boost";
         }
     }
 
@@ -135,26 +139,26 @@ public class TutorialManager : MonoBehaviour
     private void SpawnEnemies()
     {
         Instantiate(enemyPrefab);
-        
-    
+
+
         instructionText.text = "Kill 10 enemies to complete the tutorial! ";
-    
+
         if (killCounter != null)
         {
             killCounter.ActivateCounter();
         }
     }
-    
+
     public void UpdateKillCount(int count)
     {
         instructionText.text = $"Enemies killed:  {count}/10";
-    
+
         if (count >= 10)
         {
             SceneManager.LoadScene("MenuScene");
         }
     }
-    
+
     private void OnDisable()
     {
         spaceKey.Disable();
