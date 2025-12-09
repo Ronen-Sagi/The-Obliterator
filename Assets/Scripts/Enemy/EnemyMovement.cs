@@ -1,18 +1,21 @@
 using UnityEngine;
 
+/// Controls enemy movement by continuously moving toward the player.
 public class EnemyMovement : MonoBehaviour
 {
+    /// Reference to the player GameObject found by the "Player" tag at runtime.
     private GameObject player;
 
+    /// Movement speed in units per second at which the enemy approaches the player.
     [SerializeField] private float moveSpeed = 2f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    /// Initializes the player reference by finding the GameObject tagged as "Player".
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
+    /// Calculates a normalized direction vector toward the player and moves the enemy accordingly.
     void Update()
     {
         Vector2 direction = player.transform.position - transform.position;

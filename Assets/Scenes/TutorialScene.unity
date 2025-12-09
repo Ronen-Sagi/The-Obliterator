@@ -1362,7 +1362,7 @@ MonoBehaviour:
   - {fileID: 1466430744}
   - {fileID: 1029368976}
   - {fileID: 212108730}
-  killCounter: {fileID: 0}
+  killCounter: {fileID: 345039268}
 --- !u!4 &1647075314
 Transform:
   m_ObjectHideFlags: 0
@@ -1666,11 +1666,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3235333666039899743, guid: 434e44f864e704c419c985b2620cfcd6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.176809
+      value: 12.04
       objectReference: {fileID: 0}
     - target: {fileID: 3235333666039899743, guid: 434e44f864e704c419c985b2620cfcd6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.00835
+      value: 3.73
       objectReference: {fileID: 0}
     - target: {fileID: 3235333666039899743, guid: 434e44f864e704c419c985b2620cfcd6, type: 3}
       propertyPath: m_LocalPosition.z
