@@ -13,6 +13,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private InputAction spaceKey = new InputAction(type: InputActionType.Button);
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private List<Transform> enemySpawnPositions = new List<Transform>();
+    [SerializeField] private TutorialKillCounter killCounter;
     
     private int currentDotIndex = 0;
     private int currentEnemyIndex = 0;
@@ -81,10 +82,6 @@ public class TutorialManager : MonoBehaviour
                 instructionText.text = instructions[instructionIndex];
             }
         }
-        else
-        {
-            CompleteTutorial();
-        }
     }
     public void OnEnemyDestroyed()
     {
@@ -104,7 +101,6 @@ public class TutorialManager : MonoBehaviour
         }
         else
         {
-            //CompleteTutorial();
             powerUpAvaliable = true;
             instructionText.text = "Now let's activate your power up\\n Press the space button to activate your speed boost";
         }
@@ -138,60 +134,25 @@ public class TutorialManager : MonoBehaviour
 
     private void SpawnEnemies()
     {
-        for (int i = 0; i < 10; i++)
-        {
-            Vector3 spawnPosition;
-            
-            // If spawn positions are defined, use them (cycling through if more enemies than positions)
-            if (enemySpawnPositions.Count > 0)
-            {
-                spawnPosition = enemySpawnPositions[i % enemySpawnPositions.Count]. position;
-            }
-            else
-            {
-                // Otherwise spawn randomly around the edges of the screen
-                spawnPosition = GetRandomSpawnPosition();
-            }
-            
-            Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-        }
+        Instantiate(enemyPrefab);
         
-        instructionText.text = "Survive! ";
-        
-        // Complete tutorial after some time
-        Invoke(nameof(CompleteTutorial), 10f);
-    }
-
-    private Vector3 GetRandomSpawnPosition()
-    {
-        Camera mainCam = Camera.main;
-        float spawnDistance = 12f; 
-        
-        float angle = Random.Range(0f, 360f);
-        float x = Mathf.Cos(angle * Mathf.Deg2Rad) * spawnDistance;
-        float y = Mathf.Sin(angle * Mathf.Deg2Rad) * spawnDistance;
-        
-        return new Vector3(x, y, 0);
     
-    }
-
-    private void CompleteTutorial()
-    {
-        if (instructions.Count > totalDots + totalEnemies)
+        instructionText.text = "Kill 10 enemies to complete the tutorial! ";
+    
+        if (killCounter != null)
         {
-            instructionText.text = instructions[totalDots + totalEnemies];
+            killCounter.ActivateCounter();
         }
-        else
-        {
-            instructionText.text = "Tutorial complete!\n";
-        }
-
-        //LoadNextScene();
     }
-
-    private void LoadNextScene()
+    
+    public void UpdateKillCount(int count)
     {
-        SceneManager. LoadScene("MainScene");
+        instructionText.text = $"Enemies killed:  {count}/10";
+    
+        if (count >= 10)
+        {
+            SceneManager.LoadScene("MenuScene");
+        }
     }
     
     private void OnDisable()
