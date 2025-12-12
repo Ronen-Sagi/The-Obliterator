@@ -19,9 +19,6 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    /// Normalized movement direction for the bullet.
-    private Vector2 direction;
-
     /// Initializes the bullet's movement direction.
     /// <param name="dir">The direction vector to set for bullet movement.</param>
     public void Initialize(Vector2 dir)
