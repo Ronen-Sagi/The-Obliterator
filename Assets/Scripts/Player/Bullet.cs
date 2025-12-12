@@ -5,10 +5,7 @@ public class Bullet : MonoBehaviour
 {
     /// Movement speed in units per second.
     [SerializeField] public float speed = 20f;
-
-    /// Damage by the bullet upon impact.
-    [SerializeField] protected float bulletDamage;
-
+    
     /// Bullet fly time
     [SerializeField] protected float flyTime = 3f;
 
