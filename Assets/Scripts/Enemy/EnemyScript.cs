@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// Handles enemy collision logic in a 2D environment.
@@ -7,24 +8,31 @@ public class EnemyScript : MonoBehaviour
 {
     
     
-    void OnTriggerEnter2D(Collider2D other)
-    {
+    //void OnTriggerEnter2D(Collider2D other)
+    //{
         // Check if the colliding object is tagged as a bullet.
-        if (other.CompareTag("Bullet"))
-        {
+        //if (other.CompareTag("Bullet"))
+        //{
             // Attempt to find the tutorial kill counter in the scene and update it.
-            TutorialKillCounter killCounter = FindObjectOfType<TutorialKillCounter>();
-            if (killCounter != null)
-            {
-                killCounter.OnEnemyKilled();
-            }
+            //TutorialKillCounter killCounter = FindObjectOfType<TutorialKillCounter>();
+            //if (killCounter != null)
+            //{
+                //killCounter.OnEnemyKilled();
+            //}
 
             // Destroy this enemy and the bullet upon collision.
             //Destroy(gameObject);
-            Destroy(other.gameObject);
-        }
-    }
-    
-    
+      //      Destroy(other.gameObject);
+        //}
+    //}
 
+    private void OnDestroy()
+    {
+        TutorialKillCounter killCounter = FindObjectOfType<TutorialKillCounter>();
+        if (killCounter != null)
+        {
+            killCounter.OnEnemyKilled();
+        }
+        
+    }
 }
