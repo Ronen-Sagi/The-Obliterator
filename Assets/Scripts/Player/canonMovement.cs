@@ -26,10 +26,10 @@ public class canonMovement : MonoBehaviour
         float targetAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
         // Smoothly interpolate the current angle toward the target angle using rotationSpeed.
-        float angle = Mathf.LerpAngle(
+        float angle = Mathf.MoveTowardsAngle(
             transform.eulerAngles.z,
             targetAngle,
-            rotationSpeed * Time.deltaTime
+            rotationSpeed * Time.deltaTime   // degrees per second
         );
 
         // Apply the interpolated rotation around the Z axis.
