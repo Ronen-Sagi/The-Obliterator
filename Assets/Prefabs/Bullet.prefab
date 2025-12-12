@@ -201,3 +201,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   speed: 20
   bulletDamage: 0
+  flyTime: 2
