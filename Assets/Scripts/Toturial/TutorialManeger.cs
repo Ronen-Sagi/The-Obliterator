@@ -196,7 +196,7 @@ public class TutorialManager : MonoBehaviour
 
         if (count >= 10)
         {
-            SceneManager.LoadScene("MenuScene");
+            SceneManager.LoadScene("AftTutorialScene");
         }
     }
 
