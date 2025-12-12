@@ -178,10 +178,15 @@ public class TutorialManager : MonoBehaviour
     /// Spawns enemies for the kill moving enemies phase and activates the kill counter.
     private void SpawnEnemies()
     {
-        Instantiate(enemyPrefab);
+        foreach (Transform spawnPosition in enemySpawnPositions)
+        {
+            if (spawnPosition != null)
+            {
+                Instantiate(enemyPrefab, spawnPosition.position, Quaternion.identity);
+            }
+        }
 
         instructionText.text = "Kill 10 enemies to complete the tutorial! ";
-
         if (killCounter != null)
         {
             killCounter.ActivateCounter();
