@@ -24,18 +24,15 @@ public class CannonShoot : MonoBehaviour
     /// based on the mouse cursor position converted to world space.
     void Shoot()
     {
-        // Spawn bullet
-        GameObject bulletObj = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bulletObj = Instantiate(
+            bulletPrefab,
+            firePoint.position,
+            firePoint.rotation
+        );
 
-        // Get mouse world position
-        Vector3 mousePos = Mouse.current.position.ReadValue();
-        Vector3 mouseWorld =
-            Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, -Camera.main.transform.position.z));
+        Vector2 dir = firePoint.right;   // direction the cannon is facing
 
-        // Calculate direction
-        Vector2 dir = (mouseWorld - firePoint.position).normalized;
-
-        // Initialize bullet with only direction
         bulletObj.GetComponent<Bullet>().Initialize(dir);
     }
+
 }
