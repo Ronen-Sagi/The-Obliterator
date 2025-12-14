@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 496484ad134caba4d8184a32e12a67f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  damage: 10
+  damage: 1
   tag: Player
 --- !u!114 &-3240016102283185816
 MonoBehaviour:

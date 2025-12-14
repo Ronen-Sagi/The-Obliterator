@@ -11,8 +11,18 @@ public class MoneyManeger : MonoBehaviour
         currentAmount = startingMoney;
     }
 
-    public void AddMoney(int amount)
+    public void SetMoneyAmount(int amount)
     {
         currentAmount += amount;
+    }
+
+    public int GetMoneyAmount()
+    {
+        return currentAmount;
+    }
+
+    public void ReduceMoneyAmount(int amount)
+    {
+        currentAmount -= amount;
     }
 }
