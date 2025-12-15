@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6428549848938970350}
   - component: {fileID: -3999020465886895434}
   - component: {fileID: 8803362363390882676}
-  - component: {fileID: -3240016102283185816}
+  - component: {fileID: -9158107816125328076}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   damage: 10
   tag: Player
---- !u!114 &-3240016102283185816
+--- !u!114 &-9158107816125328076
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -207,7 +207,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 3142455233973040997}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07c50ec5e458955488a2b44ea873be13, type: 3}
+  m_Script: {fileID: 11500000, guid: 5152186c496e8b4489c0afcdb724ae90, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  m_EditorClassIdentifier: '::'
   maxHealth: 20
+  xp: {fileID: 4344964394885324349, guid: a0bfdb6b8b5af45c0a1bc208b0fb04d0, type: 3}

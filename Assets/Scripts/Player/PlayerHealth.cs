@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : Health
 {
-    void Die()
+    protected override void Die()
     {
         Debug.Log("Player has died!");
         SceneManager.LoadScene("GameOverScene");

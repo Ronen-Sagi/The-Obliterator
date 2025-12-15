@@ -22,7 +22,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    void Die()
+    protected virtual void Die()
     {
         //Debug.Log("Player died");
         // Disable movement / play animation / restart level
