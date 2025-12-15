@@ -6,7 +6,7 @@ public class DamageDealer : MonoBehaviour
 {
     // Damage
     [SerializeField] float damage = 10;
-    
+
     // the tag of who to deal damage to
     [SerializeField] String tag = null;
 
@@ -15,7 +15,7 @@ public class DamageDealer : MonoBehaviour
         if (collision.gameObject.CompareTag(tag))
         {
             collision.gameObject.GetComponent<Health>()?.TakeDamage(damage);
-            
+
             if (gameObject.CompareTag("Bullet"))
             {
                 Destroy(gameObject);
