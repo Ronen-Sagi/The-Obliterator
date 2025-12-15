@@ -1,12 +1,9 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] float maxHealth = 100;
     private float currentHealth;
-    
-    [SerializeField] private float deathDelay = 2;
 
     public float GetMaxHealth() { return maxHealth; }
     public float GetCurrentHealth() { return currentHealth; }
@@ -25,16 +22,10 @@ public class Health : MonoBehaviour
         }
     }
 
-    private void Die()
+    void Die()
     {
         //Debug.Log("Player died");
         // Disable movement / play animation / restart level
-        Invoke(nameof(GameOver), deathDelay);
         Destroy(gameObject);
-    }
-    
-    private void GameOver()
-    {
-        SceneManager.LoadScene("GameOverScene");
     }
 }

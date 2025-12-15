@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 174a70f6e21dca54890e414ba949bfde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  playerHealth: {fileID: 6888561988842977180}
+  playerHealth: {fileID: 8285608671456788108}
   slider: {fileID: 4780701530389038501}
   target: {fileID: 3702416654024831054}
   offset: {x: 0, y: -1, z: 0}
@@ -699,8 +699,8 @@ GameObject:
   - component: {fileID: 1253084231906592069}
   - component: {fileID: 8805362578544738324}
   - component: {fileID: 5407391454978316393}
-  - component: {fileID: 6888561988842977180}
   - component: {fileID: 7902377452306758827}
+  - component: {fileID: 8285608671456788108}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -818,19 +818,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   rotationSpeed: 250
---- !u!114 &6888561988842977180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7051006781511808790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07c50ec5e458955488a2b44ea873be13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  maxHealth: 100
 --- !u!114 &7902377452306758827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -844,6 +831,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   currentAmount: 100
+--- !u!114 &8285608671456788108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7051006781511808790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 065c1a6fe0834fe1b0ad63485e216909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  maxHealth: 100
 --- !u!1 &7845923222803701700
 GameObject:
   m_ObjectHideFlags: 0
