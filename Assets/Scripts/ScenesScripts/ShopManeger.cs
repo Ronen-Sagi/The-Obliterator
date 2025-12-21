@@ -1,10 +1,12 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.Serialization;
 
 public class ShopManeger : MonoBehaviour
 {
     /// Reference to the MoneyManeger that tracks player's money.
-    [SerializeField] private MoneyManeger moneyManeger;
+    [FormerlySerializedAs("moneyManeger")] [SerializeField]
+    private MoneyManager moneyManager;
 
     /// Text element used to show purchase confirmation messages.
     [SerializeField] private TextMeshProUGUI purchaseText;
@@ -67,10 +69,10 @@ public class ShopManeger : MonoBehaviour
     /// Attempts to purchase and shows confirmation or error text.
     public void OnNewBulletPressed()
     {
-        Debug.Log("bullet pressed, Money:  " + moneyManeger.GetMoneyAmount());
-        if (moneyManeger.GetMoneyAmount() >= bulletPrice)
+        Debug.Log("bullet pressed, Money:  " + moneyManager.GetMoneyAmount());
+        if (moneyManager.GetMoneyAmount() >= bulletPrice)
         {
-            moneyManeger.ReduceMoneyAmount(bulletPrice);
+            moneyManager.ReduceMoneyAmount(bulletPrice);
             ShowPurchaseText("New bullet purchased");
         }
         else
@@ -83,10 +85,10 @@ public class ShopManeger : MonoBehaviour
     /// Attempts to purchase and shows confirmation or error text.
     public void OnNewShieldPressed()
     {
-        Debug.Log("shield pressed, Money:  " + moneyManeger.GetMoneyAmount());
-        if (moneyManeger.GetMoneyAmount() >= shieldPrice)
+        Debug.Log("shield pressed, Money:  " + moneyManager.GetMoneyAmount());
+        if (moneyManager.GetMoneyAmount() >= shieldPrice)
         {
-            moneyManeger.ReduceMoneyAmount(shieldPrice);
+            moneyManager.ReduceMoneyAmount(shieldPrice);
             ShowPurchaseText("New shield purchased");
         }
         else
@@ -99,10 +101,10 @@ public class ShopManeger : MonoBehaviour
     /// Attempts to purchase and shows confirmation or error text.
     public void OnNewTirePressed()
     {
-        Debug.Log("tires pressed, Money:  " + moneyManeger.GetMoneyAmount());
-        if (moneyManeger.GetMoneyAmount() >= tiresPrice)
+        Debug.Log("tires pressed, Money:  " + moneyManager.GetMoneyAmount());
+        if (moneyManager.GetMoneyAmount() >= tiresPrice)
         {
-            moneyManeger.ReduceMoneyAmount(tiresPrice);
+            moneyManager.ReduceMoneyAmount(tiresPrice);
             ShowPurchaseText("New tires purchased");
         }
         else
@@ -115,10 +117,10 @@ public class ShopManeger : MonoBehaviour
     /// Attempts to purchase and shows confirmation or error text.
     public void OnNewPowerUpPressed()
     {
-        Debug.Log("power-up pressed, Money:  " + moneyManeger.GetMoneyAmount());
-        if (moneyManeger.GetMoneyAmount() >= powerUpPrice)
+        Debug.Log("power-up pressed, Money:  " + moneyManager.GetMoneyAmount());
+        if (moneyManager.GetMoneyAmount() >= powerUpPrice)
         {
-            moneyManeger.ReduceMoneyAmount(powerUpPrice);
+            moneyManager.ReduceMoneyAmount(powerUpPrice);
             ShowPurchaseText("New power-up purchased");
         }
         else
@@ -145,9 +147,9 @@ public class ShopManeger : MonoBehaviour
     /// Safely checks for null references.
     public void UpdateAmountText()
     {
-        if (amountText != null && moneyManeger != null)
+        if (amountText != null && moneyManager != null)
         {
-            amountText.text = "You have: " + moneyManeger.GetMoneyAmount().ToString() + "$";
+            amountText.text = "You have: " + moneyManager.GetMoneyAmount().ToString() + "$";
         }
     }
 

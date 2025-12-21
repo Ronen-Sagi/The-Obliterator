@@ -2,10 +2,16 @@ using UnityEngine;
 
 public class EnemyHealth : Health
 {
-    [SerializeField] GameObject xp;
+    [SerializeField] GameObject xpPrefab;
+    [SerializeField] GameObject coinPrefab;
+    
+    [SerializeField] int totalDrops = 2;
+    [SerializeField] [Range(0f, 1f)] float coinDropChance = 0.5f;
+    
     protected override void Die()
     {
-        Instantiate(xp, transform.position, Quaternion.identity);
+        GameObject prefabToSpawn = Random.value < coinDropChance ? coinPrefab : xpPrefab;
+        Instantiate(prefabToSpawn, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }

@@ -211,4 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   maxHealth: 20
-  xp: {fileID: 4344964394885324349, guid: a0bfdb6b8b5af45c0a1bc208b0fb04d0, type: 3}
+  xpPrefab: {fileID: 4344964394885324349, guid: a0bfdb6b8b5af45c0a1bc208b0fb04d0, type: 3}
+  coinPrefab: {fileID: 4344964394885324349, guid: a4b13c1f587ee4e10877c84456cacaaa, type: 3}
+  totalDrops: 2
+  coinDropChance: 0.5

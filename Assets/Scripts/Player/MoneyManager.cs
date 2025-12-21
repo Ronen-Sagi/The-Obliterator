@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MoneyManeger : MonoBehaviour
+public class MoneyManager : MonoBehaviour
 {
     [SerializeField] private int currentAmount = 100;
     //private int currentAmount;
