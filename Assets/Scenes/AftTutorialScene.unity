@@ -764,8 +764,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1685292062}
-        m_TargetAssemblyTypeName: RepeatTutorial, Assembly-CSharp
-        m_MethodName: LoadNewGame
+        m_TargetAssemblyTypeName: TwoButtonsManager, Assembly-CSharp
+        m_MethodName: LoadupperButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -854,9 +854,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1685292059}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3dd6df09f7134c899f8ac9d80468b28, type: 3}
+  m_Script: {fileID: 11500000, guid: 5aba538aef97445d28899b93cdd3a793, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::TwoButtonsManager
+  upperButtonSceneName: Level 1
+  lowerButtonSceneName: TutorialScene
 --- !u!1 &1835523264
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,8 +943,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1685292062}
-        m_TargetAssemblyTypeName: RepeatTutorial, Assembly-CSharp
-        m_MethodName: LoadTutorial
+        m_TargetAssemblyTypeName: TwoButtonsManager, Assembly-CSharp
+        m_MethodName: LoadlowerButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

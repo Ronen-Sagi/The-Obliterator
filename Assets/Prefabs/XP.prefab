@@ -81,7 +81,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1943045225073550663, guid: 099a2bda60bbf41fe86ce9f1340164a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -170,3 +170,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   startForce: 5
   friction: 6
+  xpAmount: 1
