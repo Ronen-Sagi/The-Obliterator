@@ -6,28 +6,37 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MenuScene.unity
+    path: Assets/Scenes/Menus/MenuScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/Level 1.unity
+    path: Assets/Scenes/Levels/Level 1.unity
     guid: 250e0ed40a9ce82459bb5a1d1d72fba9
   - enabled: 1
-    path: Assets/Scenes/AftLevelOne.unity
+    path: Assets/Scenes/Levels/Level 2.unity
+    guid: 89e529908bff04f8c8c6d3d5c7158f82
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level 3.unity
+    guid: 67db17f218603410babff0bc40a1ea2d
+  - enabled: 1
+    path: Assets/Scenes/Menus/AftLevelOne.unity
     guid: a134149dec98f4937b99bea75913af6f
   - enabled: 1
-    path: Assets/Scenes/TutorialScene.unity
+    path: Assets/Scenes/Menus/AftLevelTwo.unity
+    guid: 8aaf3b9cfa43a49d08e18fe008b86e4d
+  - enabled: 1
+    path: Assets/Scenes/Levels/TutorialScene.unity
     guid: dc7eda1edaf704442acac1cf56f16947
   - enabled: 1
-    path: Assets/Scenes/AftTutorialScene.unity
+    path: Assets/Scenes/Menus/AftTutorialScene.unity
     guid: 93ac16daf45194c3a96a89fe19a5c20f
   - enabled: 1
-    path: Assets/Scenes/MainScene.unity
+    path: Assets/Scenes/Levels/MainScene.unity
     guid: 38270843db691417ab596e3a084f0636
   - enabled: 1
     path: Assets/Scenes/ShopScene.unity
     guid: bf8cb5ae69b064a499776095560cf4f3
   - enabled: 1
-    path: Assets/Scenes/GameOverScene.unity
+    path: Assets/Scenes/Menus/GameOverScene.unity
     guid: ebcf785abb1114c33a788c0affbbe6d2
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

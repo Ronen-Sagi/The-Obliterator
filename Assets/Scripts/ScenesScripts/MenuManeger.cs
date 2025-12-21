@@ -13,7 +13,7 @@ public class MenuManager : MonoBehaviour
     /// Loads the main game scene.
     public void LoadNewGame()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("Level 1");
     }
 
     /// Loads the shop scene.
