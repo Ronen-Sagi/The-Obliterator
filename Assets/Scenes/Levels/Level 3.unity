@@ -660,7 +660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6978d5d0209744341b4193d6841bab97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  levelTime: 20
+  levelTime: 110
   timerText: {fileID: 1850050157}
   nextSceneName: 
   levelNumber: 3

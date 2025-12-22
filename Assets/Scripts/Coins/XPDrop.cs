@@ -5,16 +5,10 @@ using UnityEngine;
 /// </summary>
 public class XPDrop : PickupDrop
 {
+    /// The number of XP got when collected.
     [SerializeField] private int xpAmount = 1;
 
     protected override void OnCollected(GameObject player)
     {
-        // Find the XP manager or level system and add XP
-        // Adjust this based on your actual XP system
-        //var xpManager = player.GetComponent<XPManager>(); // or however you manage XP
-        //if (xpManager != null)
-        //{
-        //    xpManager. AddXP(xpAmount);
-        //}
     }
 }

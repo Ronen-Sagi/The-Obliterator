@@ -995,7 +995,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TwoButtonsManager
   upperButtonSceneName: Level 1
-  lowerButtonSceneName: ' ShopScene'
+  middleButtonSceneName: 
+  lowerButtonSceneName: ShopScene
 --- !u!1 &2097703266
 GameObject:
   m_ObjectHideFlags: 0

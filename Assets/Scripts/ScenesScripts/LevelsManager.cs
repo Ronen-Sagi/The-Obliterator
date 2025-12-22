@@ -46,16 +46,17 @@ public class LevelsManager : MonoBehaviour
     {
         // Save which level was just completed
         PlayerPrefs.SetInt("LastCompletedLevel", levelNumber);
-        
+
         // Save progression - this level completed
         int currentHighest = PlayerPrefs.GetInt("HighestCompletedLevel", 0);
         if (levelNumber > currentHighest)
         {
             PlayerPrefs.SetInt("HighestCompletedLevel", levelNumber);
         }
+
         PlayerPrefs.Save();
         Debug.Log($"Level {levelNumber} completed! Saved progression.");
-        
+
         // Load the generic after-level scene
         SceneManager.LoadScene("AftLevel");
     }

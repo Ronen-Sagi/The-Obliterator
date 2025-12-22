@@ -1,25 +1,24 @@
 using UnityEngine;
 
-/// <summary>
-/// Coin pickup that the player can collect to gain money. 
-/// </summary>
+/// Coin pickup that the player can collect to gain money.
+/// Inherits from <see cref="PickupDrop"/> and applies a fixed coin amount to the player's <see cref="MoneyManager"/> when collected.
 public class CoinDrop : PickupDrop
 {
+    /// The number of coins got when collected.
     [SerializeField] private int coinAmount = 1;
 
+    /// Called when the pickup is collected by a player.
+    /// Attempts to find a <see cref="MoneyManager"/> component on the provided <paramref name="player"/>.
+    /// If found, sets the player's money amount using <see cref="MoneyManager.SetMoneyAmount(int)"/>.
+    /// <param name="player">The player <see cref="GameObject"/> that collected this pickup.</param>
     protected override void OnCollected(GameObject player)
     {
         // Find the MoneyManeger component on the player and add coins
         MoneyManager moneyManager = player.GetComponent<MoneyManager>();
-        
+
         if (moneyManager != null)
         {
             moneyManager.SetMoneyAmount(coinAmount);
-            Debug.Log($"Player collected {coinAmount} coin(s)! Total: {moneyManager.GetMoneyAmount()}");
-        }
-        else
-        {
-            Debug. LogWarning("MoneyManeger component not found on player!");
         }
     }
 }

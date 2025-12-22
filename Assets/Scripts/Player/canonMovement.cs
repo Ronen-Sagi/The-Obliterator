@@ -29,7 +29,7 @@ public class canonMovement : MonoBehaviour
         float angle = Mathf.MoveTowardsAngle(
             transform.eulerAngles.z,
             targetAngle,
-            rotationSpeed * Time.deltaTime   // degrees per second
+            rotationSpeed * Time.deltaTime // degrees per second
         );
 
         // Apply the interpolated rotation around the Z axis.
