@@ -1,11 +1,12 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.Serialization;
+using UnityEngine. Serialization;
 
 public class ShopManeger : MonoBehaviour
 {
     /// Reference to the MoneyManeger that tracks player's money.
-    [FormerlySerializedAs("moneyManeger")] [SerializeField]
+    [FormerlySerializedAs("moneyManeger")]
+    [SerializeField]
     private MoneyManager moneyManager;
 
     /// Text element used to show purchase confirmation messages.
@@ -86,7 +87,7 @@ public class ShopManeger : MonoBehaviour
     public void OnNewShieldPressed()
     {
         Debug.Log("shield pressed, Money:  " + moneyManager.GetMoneyAmount());
-        if (moneyManager.GetMoneyAmount() >= shieldPrice)
+        if (moneyManager. GetMoneyAmount() >= shieldPrice)
         {
             moneyManager.ReduceMoneyAmount(shieldPrice);
             ShowPurchaseText("New shield purchased");
@@ -101,10 +102,10 @@ public class ShopManeger : MonoBehaviour
     /// Attempts to purchase and shows confirmation or error text. 
     public void OnNewTirePressed()
     {
-        Debug.Log("tires pressed, Money:   " + moneyManager.GetMoneyAmount());
+        Debug. Log("tires pressed, Money:   " + moneyManager.GetMoneyAmount());
         if (moneyManager.GetMoneyAmount() >= tiresPrice)
         {
-            moneyManager.ReduceMoneyAmount(tiresPrice);
+            moneyManager. ReduceMoneyAmount(tiresPrice);
             ShowPurchaseText("New tires purchased");
         }
         else
@@ -120,7 +121,7 @@ public class ShopManeger : MonoBehaviour
         Debug.Log("power-up pressed, Money:   " + moneyManager.GetMoneyAmount());
         if (moneyManager.GetMoneyAmount() >= powerUpPrice)
         {
-            moneyManager.ReduceMoneyAmount(powerUpPrice);
+            moneyManager. ReduceMoneyAmount(powerUpPrice);
             ShowPurchaseText("New power-up purchased");
         }
         else
@@ -169,7 +170,7 @@ public class ShopManeger : MonoBehaviour
 
         if (tiresPriceText != null)
         {
-            tiresPriceText.text = tiresPrice.ToString() + "$";
+            tiresPriceText.text = tiresPrice. ToString() + "$";
         }
 
         if (powerUpPriceText != null)
