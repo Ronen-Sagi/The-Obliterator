@@ -5,8 +5,8 @@ using UnityEngine.Serialization;
 public class ShopManeger : MonoBehaviour
 {
     /// Reference to the MoneyManeger that tracks player's money.
-    [FormerlySerializedAs("moneyManeger")] [SerializeField]
-    private MoneyManager moneyManager;
+    [FormerlySerializedAs("moneyManeger")]
+    [SerializeField] private MoneyManager moneyManager;
 
     /// Text element used to show purchase confirmation messages.
     [SerializeField] private TextMeshProUGUI purchaseText;
