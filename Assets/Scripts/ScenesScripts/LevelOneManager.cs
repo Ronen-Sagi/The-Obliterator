@@ -10,7 +10,7 @@ public class LevelOneManager : MonoBehaviour
 
     private float timeRemaining;
     private bool timerIsRunning = true;
-    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,13 +29,14 @@ public class LevelOneManager : MonoBehaviour
                 timerIsRunning = false;
                 OnTimerComplete();
             }
+
             UpdateTimerDisplay();
         }
     }
-    
+
     void UpdateTimerDisplay()
     {
-        int minutes = Mathf. FloorToInt(timeRemaining / 60);
+        int minutes = Mathf.FloorToInt(timeRemaining / 60);
         int seconds = Mathf.FloorToInt(timeRemaining % 60);
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
@@ -45,4 +46,3 @@ public class LevelOneManager : MonoBehaviour
         SceneManager.LoadScene(nextSceneName);
     }
 }
-
