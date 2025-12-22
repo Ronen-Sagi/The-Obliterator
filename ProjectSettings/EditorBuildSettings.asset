@@ -18,11 +18,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Level 3.unity
     guid: 67db17f218603410babff0bc40a1ea2d
   - enabled: 1
-    path: Assets/Scenes/Menus/AftLevelOne.unity
+    path: Assets/Scenes/Menus/AftLevel.unity
     guid: a134149dec98f4937b99bea75913af6f
-  - enabled: 1
-    path: Assets/Scenes/Menus/AftLevelTwo.unity
-    guid: 8aaf3b9cfa43a49d08e18fe008b86e4d
   - enabled: 1
     path: Assets/Scenes/Levels/TutorialScene.unity
     guid: dc7eda1edaf704442acac1cf56f16947

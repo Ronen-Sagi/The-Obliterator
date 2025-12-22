@@ -2,11 +2,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelOneManager : MonoBehaviour
+public class LevelsManager : MonoBehaviour
 {
     [SerializeField] private float levelTime = 60f; // Level time in seconds
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private string nextSceneName;
+    [SerializeField] private int levelNumber = 0;
 
     private float timeRemaining;
     private bool timerIsRunning = true;
@@ -43,6 +44,19 @@ public class LevelOneManager : MonoBehaviour
 
     void OnTimerComplete()
     {
-        SceneManager.LoadScene(nextSceneName);
+        // Save which level was just completed
+        PlayerPrefs.SetInt("LastCompletedLevel", levelNumber);
+        
+        // Save progression - this level completed
+        int currentHighest = PlayerPrefs.GetInt("HighestCompletedLevel", 0);
+        if (levelNumber > currentHighest)
+        {
+            PlayerPrefs.SetInt("HighestCompletedLevel", levelNumber);
+        }
+        PlayerPrefs.Save();
+        Debug.Log($"Level {levelNumber} completed! Saved progression.");
+        
+        // Load the generic after-level scene
+        SceneManager.LoadScene("AftLevel");
     }
 }

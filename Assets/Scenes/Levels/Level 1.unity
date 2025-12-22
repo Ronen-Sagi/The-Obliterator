@@ -462,7 +462,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   levelTime: 60
   timerText: {fileID: 497731754}
-  nextSceneName: AftLevelOne
+  nextSceneName: 
+  levelNumber: 1
 --- !u!4 &1568491538
 Transform:
   m_ObjectHideFlags: 0

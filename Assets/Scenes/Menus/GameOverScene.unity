@@ -991,11 +991,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1685292059}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aba538aef97445d28899b93cdd3a793, type: 3}
+  m_Script: {fileID: 11500000, guid: b63b44fb2314a4e25be9153d5bbd926d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
-  upperButtonSceneName: MainScene
-  lowerButtonSceneName: ShopScene
+  m_EditorClassIdentifier: Assembly-CSharp::TwoButtonsManager
+  upperButtonSceneName: Level 1
+  lowerButtonSceneName: ' ShopScene'
 --- !u!1 &2097703266
 GameObject:
   m_ObjectHideFlags: 0
