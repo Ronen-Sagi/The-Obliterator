@@ -24,7 +24,7 @@ public class ShopManeger : MonoBehaviour
     [SerializeField] private TextMeshProUGUI tiresPriceText;
     [SerializeField] private TextMeshProUGUI powerUpPriceText;
 
-    /// Prices for the different shop items.
+    /// Prices for the different shop items. 
     [SerializeField] private int bulletPrice = 30;
 
     [SerializeField] private int shieldPrice = 20;
@@ -37,7 +37,7 @@ public class ShopManeger : MonoBehaviour
     /// Tracks whether the purchaseText is currently active.
     private bool isTextActive = false;
 
-    /// Initializes the shop UI. Hides the purchase text and updates displayed values.
+    /// Initializes the shop UI.  Hides the purchase text and updates displayed values.
     void Start()
     {
         if (purchaseText != null)
@@ -98,10 +98,10 @@ public class ShopManeger : MonoBehaviour
     }
 
     /// Called when the "New Tires" purchase button is pressed.
-    /// Attempts to purchase and shows confirmation or error text.
+    /// Attempts to purchase and shows confirmation or error text. 
     public void OnNewTirePressed()
     {
-        Debug.Log("tires pressed, Money:  " + moneyManager.GetMoneyAmount());
+        Debug.Log("tires pressed, Money:   " + moneyManager.GetMoneyAmount());
         if (moneyManager.GetMoneyAmount() >= tiresPrice)
         {
             moneyManager.ReduceMoneyAmount(tiresPrice);
@@ -113,11 +113,11 @@ public class ShopManeger : MonoBehaviour
         }
     }
 
-    /// Called when the "New Power-Up" purchase button is pressed.
+    /// Called when the "New Power-Up" purchase button is pressed. 
     /// Attempts to purchase and shows confirmation or error text.
     public void OnNewPowerUpPressed()
     {
-        Debug.Log("power-up pressed, Money:  " + moneyManager.GetMoneyAmount());
+        Debug.Log("power-up pressed, Money:   " + moneyManager.GetMoneyAmount());
         if (moneyManager.GetMoneyAmount() >= powerUpPrice)
         {
             moneyManager.ReduceMoneyAmount(powerUpPrice);
@@ -154,7 +154,7 @@ public class ShopManeger : MonoBehaviour
     }
 
     /// Updates all price text UI elements to reflect the configured item prices.
-    /// Safely checks for null references.
+    /// Safely checks for null references. 
     public void UpdatePriceTexts()
     {
         if (bulletPriceText != null)
