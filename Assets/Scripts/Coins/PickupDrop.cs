@@ -2,7 +2,6 @@ using UnityEngine;
 
 /// Base class for pickup items that spawn with an initial impulse and quickly slow down,
 /// then get collected when the Player enters the trigger.
-/// NOT YET IMPLEMENTED PROPERLY.
 public abstract class PickupDrop : MonoBehaviour
 {
     /// Initial movement speed applied in a random 2D direction on <see cref="Start"/>.
@@ -21,6 +20,14 @@ public abstract class PickupDrop : MonoBehaviour
     {
         Vector2 direction = Random.insideUnitCircle.normalized;
         velocity = direction * startForce;
+
+        // Ensure collider is set to trigger as per requirements
+        Collider2D col = GetComponent<Collider2D>();
+        if (col == null)
+        {
+            col = gameObject.AddComponent<CircleCollider2D>();
+        }
+        col.isTrigger = true;
     }
 
     /// Moves the pickup each frame and damps its velocity toward zero.

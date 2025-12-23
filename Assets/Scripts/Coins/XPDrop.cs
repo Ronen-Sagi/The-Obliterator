@@ -10,5 +10,16 @@ public class XPDrop : PickupDrop
 
     protected override void OnCollected(GameObject player)
     {
+        // Add to persistent TotalXP
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.AddXP(xpAmount);
+        }
+
+        // Add to current run ExperienceManager
+        if (ExperienceManager.Instance != null)
+        {
+            ExperienceManager.Instance.AddXP(xpAmount);
+        }
     }
 }

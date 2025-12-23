@@ -4,10 +4,10 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     /// The maximum health value the player can have.
-    [SerializeField] float maxHealth = 100;
+    [SerializeField] protected float maxHealth = 100;
 
     /// The player's current health.
-    private float currentHealth;
+    protected float currentHealth;
 
     /// Gets the configured maximum health.
     /// <returns>The maximum health value.</returns>
@@ -24,7 +24,7 @@ public class Health : MonoBehaviour
     }
 
     /// Initializes current health to the maximum.
-    void Awake()
+    protected virtual void Awake()
     {
         currentHealth = maxHealth;
     }
@@ -46,5 +46,11 @@ public class Health : MonoBehaviour
     protected virtual void Die()
     {
         Destroy(gameObject);
+    }
+
+    public void SetMaxHealth(float newMax)
+    {
+        maxHealth = newMax;
+        currentHealth = maxHealth;
     }
 }
