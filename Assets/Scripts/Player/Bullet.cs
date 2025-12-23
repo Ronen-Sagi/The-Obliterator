@@ -46,31 +46,32 @@ public class Bullet : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            // Apply knockback
+            EnemyMovement enemyMove = collision.gameObject.GetComponent<EnemyMovement>();
+            if (enemyMove != null)
+            {
+                // Knockback direction is bullet direction
+                Vector2 knockDir = rb.linearVelocity.normalized;
+                // Force amount? Let's say 5f for now or based on damage/speed.
+                float force = 5f;
+                enemyMove.ApplyKnockback(knockDir * force);
+            }
+
             if (enablePiercing)
             {
                 pierceCount++;
-                // maxPierce is total targets to pierce.
-                // If maxPierce is 1, it hits 1st, count becomes 1. 1 >= 1? Destroy.
-                // This means it hits 1 enemy.
-                // Requirement "AP Rounds... Pierces through one enemy target".
-                // Means it hits Enemy A (passes through) and hits Enemy B (destroys?).
-                // So it should hit 2 targets?
-                // "Pierces through one" means it goes through one.
-                // So maxPierce should be 2 (hit 1, keep going, hit 2, stop?). Or infinite but count is 1?
-                // Usually "Pierce 1" means Hit + 1 more.
-                // If maxPierce is "Number of EXTRA enemies to hit", then loop should be `if (pierceCount > maxPierce)`.
-                // If maxPierce is "Total enemies to hit", then `if (pierceCount >= maxPierce)`.
-
-                // Let's assume maxPierce is Total Hits.
-                // If I want to pierce 1 enemy, I want to hit 2 enemies total.
-                // So maxPierce should be 2.
-                // CannonShoot sets it based on config.
-
                 if (pierceCount >= maxPierce)
                 {
                     Destroy(gameObject);
                 }
             }
+            // If not piercing, Destroy is handled by DamageDealer usually?
+            // DamageDealer checks collision.gameObject matches tag.
+            // If Bullet has DamageDealer, it destroys itself if it hits target.
+            // But here we might destroy it too?
+            // If DamageDealer destroys it, this OnCollisionEnter2D runs before or after?
+            // They are on the same object. Unity order is undefined but usually both run.
+            // If DamageDealer destroys it, code here continues until end of frame.
         }
     }
 

@@ -72,30 +72,45 @@ public class EnemySpawner : MonoBehaviour
         // Calculate scaling multiplier: 1.15^(Level - 1)
         float multiplier = Mathf.Pow(1.15f, currentLevel - 1);
 
+        // Apply Config to Movement
+        EnemyMovement movementComp = enemy.GetComponent<EnemyMovement>();
+        if (movementComp != null)
+        {
+            movementComp.Initialize(config);
+        }
+
         // Apply Health
         EnemyHealth healthComp = enemy.GetComponent<EnemyHealth>();
         if (healthComp != null)
         {
-            float baseHealth = config != null ? config.baseHealth : 10f; // Default if no config
+            float baseHealth = config != null ? config.baseHealth : 10f;
             float scaledHealth = baseHealth * multiplier;
             healthComp.SetMaxHealth(scaledHealth);
         }
 
-        // Apply Speed
-        EnemyMovement movementComp = enemy.GetComponent<EnemyMovement>();
-        if (movementComp != null)
-        {
-            float baseSpeed = config != null ? config.baseSpeed : 2f;
-            movementComp.SetSpeed(baseSpeed);
-        }
-
-        // Apply Damage
+        // Apply Damage (Contact damage)
         DamageDealer damageComp = enemy.GetComponent<DamageDealer>();
         if (damageComp != null)
         {
             float baseDamage = config != null ? config.baseDamage : 10f;
             float scaledDamage = baseDamage * multiplier;
             damageComp.SetDamage(scaledDamage);
+        }
+
+        // Handle Ranger Shooting
+        if (config != null && config.type == EnemyType.Ranger)
+        {
+            // Add EnemyShooter if missing
+            EnemyShooter shooter = enemy.GetComponent<EnemyShooter>();
+            if (shooter == null)
+            {
+                shooter = enemy.AddComponent<EnemyShooter>();
+            }
+
+            float baseDamage = config.baseDamage; // Or separate projectile damage
+            float scaledDamage = baseDamage * multiplier;
+
+            shooter.Configure(scaledDamage, config.attackRange, config.projectilePrefab);
         }
     }
 

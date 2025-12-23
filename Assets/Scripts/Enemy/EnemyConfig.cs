@@ -17,4 +17,8 @@ public class EnemyConfig : ScriptableObject
     public float baseDamage = 10f;
     public float baseSpeed = 2f;
     public float knockbackResistance = 0f; // 0 to 1
+
+    // Ranger specific
+    public GameObject projectilePrefab;
+    public float attackRange = 6f;
 }
