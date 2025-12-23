@@ -9,6 +9,10 @@ public class Bullet : MonoBehaviour
     /// Bullet fly time
     [SerializeField] protected float flyTime = 3f;
 
+    public bool enablePiercing = false;
+    private int pierceCount = 0;
+    private int maxPierce = 1;
+
     Rigidbody2D rb;
 
     void Awake()
@@ -24,6 +28,11 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, flyTime);
     }
 
+    public void SetMaxPierce(int max)
+    {
+        maxPierce = max;
+    }
+
     /// Called when the bullet collides with another object.
     /// Destroys the bullet if it hits a wall.
     void OnCollisionEnter2D(Collision2D collision)
@@ -32,6 +41,36 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall"))
         {
             Destroy(gameObject);
+            return;
+        }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            if (enablePiercing)
+            {
+                pierceCount++;
+                // maxPierce is total targets to pierce.
+                // If maxPierce is 1, it hits 1st, count becomes 1. 1 >= 1? Destroy.
+                // This means it hits 1 enemy.
+                // Requirement "AP Rounds... Pierces through one enemy target".
+                // Means it hits Enemy A (passes through) and hits Enemy B (destroys?).
+                // So it should hit 2 targets?
+                // "Pierces through one" means it goes through one.
+                // So maxPierce should be 2 (hit 1, keep going, hit 2, stop?). Or infinite but count is 1?
+                // Usually "Pierce 1" means Hit + 1 more.
+                // If maxPierce is "Number of EXTRA enemies to hit", then loop should be `if (pierceCount > maxPierce)`.
+                // If maxPierce is "Total enemies to hit", then `if (pierceCount >= maxPierce)`.
+
+                // Let's assume maxPierce is Total Hits.
+                // If I want to pierce 1 enemy, I want to hit 2 enemies total.
+                // So maxPierce should be 2.
+                // CannonShoot sets it based on config.
+
+                if (pierceCount >= maxPierce)
+                {
+                    Destroy(gameObject);
+                }
+            }
         }
     }
 

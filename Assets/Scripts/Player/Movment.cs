@@ -25,6 +25,10 @@ public class Movment : MonoBehaviour
     /// Multiplier applied to speed and max speed during a speed boost.
     [SerializeField] private float speedBoostMultiplier = 2f;
 
+    // Equipment
+    [SerializeField] private WheelType currentWheels;
+    [SerializeField] private ArmorType currentArmor;
+
     /// Cached reference to the <see cref="Rigidbody2D"/> controlling physics-based movement.
     private Rigidbody2D rb;
 
@@ -33,6 +37,7 @@ public class Movment : MonoBehaviour
 
     /// Original configured max move speed before any boosts.
     private float originalMaxMoveSpeed;
+    private float originalFriction;
 
     /// Indicates whether a speed boost is currently active.
     private bool isSpeedBoosted = false;
@@ -48,6 +53,9 @@ public class Movment : MonoBehaviour
 
         originalMoveSpeed = moveSpeed;
         originalMaxMoveSpeed = maxMoveSpeed;
+        originalFriction = friction;
+
+        ApplyStats();
     }
 
     /// Enables input actions when the component becomes active.
@@ -100,8 +108,7 @@ public class Movment : MonoBehaviour
         if (!isSpeedBoosted)
         {
             isSpeedBoosted = true;
-            moveSpeed = originalMoveSpeed * speedBoostMultiplier;
-            maxMoveSpeed = originalMaxMoveSpeed * speedBoostMultiplier;
+            UpdateStatsForBoost();
 
             Invoke(nameof(DeactivateSpeedBoost), duration);
         }
@@ -110,8 +117,48 @@ public class Movment : MonoBehaviour
     /// Reverts movement speed and max speed to their original values and clears the boost flag.
     private void DeactivateSpeedBoost()
     {
-        moveSpeed = originalMoveSpeed;
-        maxMoveSpeed = originalMaxMoveSpeed;
         isSpeedBoosted = false;
+        ApplyStats(); // Re-apply equipment stats
+    }
+
+    public void EquipWheels(WheelType wheels)
+    {
+        currentWheels = wheels;
+        ApplyStats();
+    }
+
+    public void EquipArmor(ArmorType armor)
+    {
+        currentArmor = armor;
+        ApplyStats();
+    }
+
+    private void ApplyStats()
+    {
+        float wheelSpeedMult = currentWheels ? currentWheels.speedMultiplier : 1f;
+        float wheelFriction = currentWheels ? currentWheels.friction : originalFriction;
+
+        float armorSpeedMult = currentArmor ? currentArmor.speedMultiplier : 1f;
+
+        float totalSpeedMult = wheelSpeedMult * armorSpeedMult;
+
+        // Base values * Equipment
+        float effectiveMoveSpeed = originalMoveSpeed * totalSpeedMult;
+        float effectiveMaxSpeed = originalMaxMoveSpeed * totalSpeedMult;
+
+        if (isSpeedBoosted)
+        {
+            effectiveMoveSpeed *= speedBoostMultiplier;
+            effectiveMaxSpeed *= speedBoostMultiplier;
+        }
+
+        moveSpeed = effectiveMoveSpeed;
+        maxMoveSpeed = effectiveMaxSpeed;
+        friction = wheelFriction; // "Grip Wheels: 0% sliding" implies high friction. "Turbo Treads: high sliding" implies low friction.
+    }
+
+    private void UpdateStatsForBoost()
+    {
+        ApplyStats(); // Since ApplyStats checks isSpeedBoosted, just call it.
     }
 }

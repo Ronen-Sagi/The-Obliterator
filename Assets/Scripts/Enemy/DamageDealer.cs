@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 /// Deals damage to other 2D collision targets.
@@ -24,8 +23,22 @@ public class DamageDealer : MonoBehaviour
 
             if (gameObject.CompareTag("Bullet"))
             {
-                Destroy(gameObject);
+                // Check if the bullet should persist (e.g. piercing)
+                Bullet bullet = GetComponent<Bullet>();
+                if (bullet != null && bullet.enablePiercing)
+                {
+                    // Bullet handles its own destruction logic
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
             }
         }
+    }
+
+    public void SetDamage(float newDamage)
+    {
+        damage = newDamage;
     }
 }
