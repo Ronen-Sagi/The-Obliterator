@@ -19,6 +19,7 @@ public class CoinDrop : PickupDrop
         if (moneyManager != null)
         {
             moneyManager.SetMoneyAmount(coinAmount);
+            ////
         }
     }
 }
