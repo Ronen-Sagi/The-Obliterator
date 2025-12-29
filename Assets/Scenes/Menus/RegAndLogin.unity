@@ -843,7 +843,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1685292062}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ThreeButtonsManager, Assembly-CSharp
         m_MethodName: LoadupperButton
         m_Mode: 1
@@ -904,7 +904,7 @@ GameObject:
   - component: {fileID: 1685292061}
   - component: {fileID: 1685292062}
   m_Layer: 0
-  m_Name: MenuManeger
+  m_Name: RegAndLoginManeger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -934,12 +934,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1685292059}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b63b44fb2314a4e25be9153d5bbd926d, type: 3}
+  m_Script: {fileID: 11500000, guid: f723c05303ad4400996380ad561e0477, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ThreeButtonsManager
-  upperButtonSceneName: Level 1
-  middleButtonSceneName: TutorialScene
-  lowerButtonSceneName: ShopScene
+  m_EditorClassIdentifier: '::'
 --- !u!1 &1835523264
 GameObject:
   m_ObjectHideFlags: 0
@@ -1023,7 +1020,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1685292062}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ThreeButtonsManager, Assembly-CSharp
         m_MethodName: LoadMiddleButton
         m_Mode: 1
@@ -1156,7 +1153,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1685292062}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ThreeButtonsManager, Assembly-CSharp
         m_MethodName: LoadlowerButton
         m_Mode: 1
