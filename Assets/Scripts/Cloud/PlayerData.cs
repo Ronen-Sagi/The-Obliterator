@@ -17,11 +17,6 @@ public class PlayerData
     public int highestCompletedLevel;
 
     /// <summary>
-    /// The last level the player completed. 
-    /// </summary>
-    public int lastCompletedLevel;
-
-    /// <summary>
     /// The player's current money/currency amount.
     /// </summary>
     public int money;
@@ -32,19 +27,25 @@ public class PlayerData
     public PlayerData()
     {
         username = "";
-        highestCompletedLevel = 0;
-        lastCompletedLevel = 0;
+        highestCompletedLevel = 1;
         money = 0;
     }
 
     /// <summary>
     /// Constructor with parameters. 
     /// </summary>
-    public PlayerData(string username, int highestLevel, int lastLevel, int money)
+    public PlayerData(string username, int highestLevel, int money)
     {
         this.username = username;
         this.highestCompletedLevel = highestLevel;
-        this.lastCompletedLevel = lastLevel;
         this.money = money;
+    }
+    
+    public void SetHighestCompletedLevel(int level)
+    {
+        if (level > highestCompletedLevel)
+        {
+            highestCompletedLevel = level;
+        }
     }
 }

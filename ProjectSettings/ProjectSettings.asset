@@ -684,11 +684,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
-  cloudProjectId: da3b2368-05ff-4817-b3f6-bedd9c88b22b
+  cloudProjectId: 398bd807-6aa9-4846-befc-3b552b861c19
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 'The Obliterator '
-  organizationId: ronencher
+  projectName: My project 2025-11-26_15-05-27
+  organizationId: unity_80428bcf701860e2e785
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

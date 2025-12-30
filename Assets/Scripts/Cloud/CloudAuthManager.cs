@@ -83,7 +83,7 @@ public class CloudAuthManager : MonoBehaviour
             Debug.Log($"Register successful! Player ID: {AuthenticationService.Instance.PlayerId}");
 
             // Create new player data with defaults
-            CurrentPlayerData = new PlayerData(username, 0, 0, 0);
+            CurrentPlayerData = new PlayerData(username, 1, 0);
             await SavePlayerDataToCloud();
 
             return "Registration successful! ";
@@ -211,9 +211,7 @@ public class CloudAuthManager : MonoBehaviour
     public async Task UpdatePlayerProgress(int completedLevel)
     {
         if (CurrentPlayerData == null) return;
-
-        CurrentPlayerData.lastCompletedLevel = completedLevel;
-
+        
         if (completedLevel > CurrentPlayerData.highestCompletedLevel)
         {
             CurrentPlayerData.highestCompletedLevel = completedLevel;
