@@ -5,11 +5,15 @@ using UnityEngine;
 /// Deals damage to other 2D collision targets.
 public class DamageDealer : MonoBehaviour
 {
-    /// Amount of damage applied to the target's <see cref="Health"/> on a valid collision.
-    [SerializeField] float damage = 10;
+    private EnemyStats es;
 
     /// Tag that the collided GameObject must have in order to receive damage.
     [SerializeField] String tag = null;
+
+    private void Awake()
+    {
+        es = GetComponent<EnemyStats>();
+    }
 
     /// Unity 2D physics callback invoked when this collider begins touching another collider.
     /// <param name="collision">Collision data for the contact.</param>
@@ -20,12 +24,7 @@ public class DamageDealer : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(tag))
         {
-            collision.gameObject.GetComponent<Health>()?.TakeDamage(damage);
-
-            if (gameObject.CompareTag("Bullet"))
-            {
-                Destroy(gameObject);
-            }
+            collision.gameObject.GetComponent<Health>()?.TakeDamage(es.damage);
         }
     }
 }

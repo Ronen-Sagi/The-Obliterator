@@ -13,9 +13,11 @@ GameObject:
   - component: {fileID: 5350671230740538115}
   - component: {fileID: 4786212170874862251}
   - component: {fileID: 1444267956391261214}
-  - component: {fileID: 8759896861043752053}
+  - component: {fileID: 7050464678841533657}
+  - component: {fileID: 8919547826274219391}
+  - component: {fileID: 5143604734911693737}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: LaserShooter
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -200,9 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25950171ef92d4e46ae36d1b4f951d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  speed: 20
-  flyTime: 2
---- !u!114 &8759896861043752053
+--- !u!114 &7050464678841533657
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -211,8 +211,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 6446372701890203791}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 496484ad134caba4d8184a32e12a67f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ee02381520d1bb4a93a8909a7cf253d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DamageDealer
+  m_EditorClassIdentifier: '::'
+  bulletPrefab: {fileID: 0}
+  fireRate: 0.5
   damage: 10
-  tag: Enemy
+  flyTime: 2
+  bulletCount: 1
+  bulletSpeed: 20
+--- !u!114 &8919547826274219391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6446372701890203791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 295142f649928c44987ce1b691c880ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!114 &5143604734911693737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6446372701890203791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ac9a435018b584dbbead2ca6d4fc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'

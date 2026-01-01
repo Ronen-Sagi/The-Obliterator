@@ -32,6 +32,6 @@ public class CannonShoot : MonoBehaviour
 
         Vector2 dir = firePoint.right; // direction the cannon is facing
 
-        bulletObj.GetComponent<Bullet>().Initialize(dir);
+        bulletObj.GetComponent<Weapon>().Initialize(dir);
     }
 }

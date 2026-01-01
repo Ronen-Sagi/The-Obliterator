@@ -5,13 +5,12 @@ public class EnemyMovement : MonoBehaviour
 {
     /// Reference to the player GameObject found by the "Player" tag at runtime.
     private GameObject player;
-
-    /// Movement speed in units per second at which the enemy approaches the player.
-    [SerializeField] private float moveSpeed = 2f;
+    private EnemyStats es;
 
     /// Initializes the player reference by finding the GameObject tagged as "Player".
-    void Start()
+    void Awake()
     {
+        es = GetComponent<EnemyStats>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -20,6 +19,6 @@ public class EnemyMovement : MonoBehaviour
     {
         Vector2 direction = player.transform.position - transform.position;
         direction.Normalize();
-        transform.position += (Vector3)direction * moveSpeed * Time.deltaTime;
+        transform.position += (Vector3)direction * es.moveSpeed * Time.deltaTime;
     }
 }
