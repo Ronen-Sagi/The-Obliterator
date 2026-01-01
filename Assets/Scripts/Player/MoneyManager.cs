@@ -19,7 +19,7 @@ public class MoneyManager : MonoBehaviour
 
     /// Adds the provided amount to the current balance.
     /// <param name="amount">Amount to add to the current balance.</param>
-    public void SetMoneyAmount(int amount)
+    public void AddMoneyAmount(int amount)
     {
         currentAmount += amount;
     }

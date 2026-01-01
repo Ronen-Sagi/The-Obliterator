@@ -9,7 +9,7 @@ public class CoinDrop : PickupDrop
 
     /// Called when the pickup is collected by a player.
     /// Attempts to find a <see cref="MoneyManager"/> component on the provided <paramref name="player"/>.
-    /// If found, sets the player's money amount using <see cref="MoneyManager.SetMoneyAmount(int)"/>.
+    /// If found, sets the player's money amount using <see cref="MoneyManager.AddMoneyAmount"/>.
     /// <param name="player">The player <see cref="GameObject"/> that collected this pickup.</param>
     protected override void OnCollected(GameObject player)
     {
@@ -18,7 +18,7 @@ public class CoinDrop : PickupDrop
 
         if (moneyManager != null)
         {
-            moneyManager.SetMoneyAmount(coinAmount);
+            moneyManager.AddMoneyAmount(coinAmount);
         }
     }
 }
