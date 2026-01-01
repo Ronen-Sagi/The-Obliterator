@@ -41,6 +41,7 @@ public class ShopManeger : MonoBehaviour
     /// Initializes the shop UI. Hides the purchase text and updates displayed values.
     void Start()
     {
+        moneyManager = MoneyManager.Instance;
         if (purchaseText != null)
         {
             purchaseText.gameObject.SetActive(false);
