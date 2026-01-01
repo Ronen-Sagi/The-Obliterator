@@ -244,3 +244,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ac9a435018b584dbbead2ca6d4fc1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  tag: Enemy

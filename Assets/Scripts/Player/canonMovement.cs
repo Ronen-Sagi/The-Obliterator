@@ -4,9 +4,16 @@ using UnityEngine.InputSystem;
 /// Rotates the cannon to smoothly aim toward the current mouse position in world space.
 public class canonMovement : MonoBehaviour
 {
+    PlayerStats ps;
+    
     /// Speed factor controlling how quickly the cannon rotates toward the target angle.
-    public float rotationSpeed = 5f;
+    float rotationSpeed = 5f;
 
+    void Awake()
+    {
+        ps = GetComponent<PlayerStats>();
+        rotationSpeed = ps.cannonRotationSpeed;
+    }
     /// Reads the mouse position, converts it to world space, computes the target angle,
     /// and applies a smoothed rotation to the cannon.
     void Update()

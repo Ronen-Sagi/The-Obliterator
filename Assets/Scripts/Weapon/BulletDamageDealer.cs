@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 public class BulletDamageDealer : MonoBehaviour
 {
     WeaponStats ws;
+    [SerializeField] String tag = null;
 
     void Awake()
     {

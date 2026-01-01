@@ -6,21 +6,22 @@ using UnityEngine.InputSystem;
 /// More kind of boost will be added later.
 public class Movment : MonoBehaviour
 {
+    private PlayerStats ps;
+    
     /// Input actions for moving 
     [SerializeField] private InputAction up = new InputAction(type: InputActionType.Button);
-
     [SerializeField] private InputAction down = new InputAction(type: InputActionType.Button);
     [SerializeField] private InputAction left = new InputAction(type: InputActionType.Button);
     [SerializeField] private InputAction right = new InputAction(type: InputActionType.Button);
 
     /// Impulse force applied per input press to accelerate the player.
-    [SerializeField] private float moveSpeed = 5f;
+    private float moveSpeed = 5f;
 
     /// Maximum allowed linear speed.
     [SerializeField] private float maxMoveSpeed = 5f;
 
     /// Friction factor used to lerp velocity toward zero each frame.
-    [SerializeField] private float friction = 5f;
+    private float friction = 5f;
 
     /// Multiplier applied to speed and max speed during a speed boost.
     [SerializeField] private float speedBoostMultiplier = 2f;
@@ -38,14 +39,17 @@ public class Movment : MonoBehaviour
     private bool isSpeedBoosted = false;
 
     /// Initializes input bindings and caches original speed values.
-    void Start()
+    void Awake()
     {
         up.AddBinding("<Keyboard>/w");
         down.AddBinding("<Keyboard>/s");
         left.AddBinding("<Keyboard>/a");
         right.AddBinding("<Keyboard>/d");
         rb = GetComponent<Rigidbody2D>();
-
+        ps = GetComponent<PlayerStats>();
+        moveSpeed = ps.moveSpeed;
+        friction = ps.friction;
+        
         originalMoveSpeed = moveSpeed;
         originalMaxMoveSpeed = maxMoveSpeed;
     }

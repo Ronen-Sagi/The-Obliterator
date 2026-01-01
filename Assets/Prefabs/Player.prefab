@@ -668,6 +668,7 @@ GameObject:
   - component: {fileID: 8805362578544738324}
   - component: {fileID: 5407391454978316393}
   - component: {fileID: 8285608671456788108}
+  - component: {fileID: -2059149968212319101}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -741,9 +742,7 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  moveSpeed: 3.4
   maxMoveSpeed: 5
-  friction: 3
   speedBoostMultiplier: 2
 --- !u!50 &8805362578544738324
 Rigidbody2D:
@@ -797,7 +796,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 065c1a6fe0834fe1b0ad63485e216909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!114 &-2059149968212319101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7051006781511808790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eea6600856370140a51b0a20b18b68c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
   maxHealth: 50
+  moveSpeed: 3.4
+  cannonRotationSpeed: 250
+  armor: 0
+  friction: 3
 --- !u!1 &7845923222803701700
 GameObject:
   m_ObjectHideFlags: 0
