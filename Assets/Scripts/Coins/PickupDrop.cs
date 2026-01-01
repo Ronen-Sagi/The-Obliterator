@@ -29,7 +29,7 @@ public abstract class PickupDrop : MonoBehaviour
         transform.position += (Vector3)(velocity * Time.deltaTime);
         velocity = Vector2.Lerp(velocity, Vector2.zero, friction * Time.deltaTime);
     }
-
+    
     /// Called when the pickup is collected by the Player.
     /// <param name="player">The player GameObject that collected this pickup.</param>
     /// Implementations should apply the pickup effect. The pickup is destroyed immediately after this call.

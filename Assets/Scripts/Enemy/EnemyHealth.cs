@@ -5,6 +5,8 @@ using UnityEngine;
 /// then destroys the enemy GameObject.
 public class EnemyHealth : Health
 {
+    private EnemyStats es;
+    
     /// Prefab spawned when the enemy drops XP.
     [SerializeField] GameObject xpPrefab;
 
@@ -26,5 +28,12 @@ public class EnemyHealth : Health
         GameObject prefabToSpawn = Random.value < coinDropChance ? coinPrefab : xpPrefab;
         Instantiate(prefabToSpawn, transform.position, Quaternion.identity);
         Destroy(gameObject);
+    }
+
+    protected override void Awake()
+    {
+        es = GetComponent<EnemyStats>();
+        maxHealth = es.maxHealth;
+        base.Awake();
     }
 }
