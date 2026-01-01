@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menus/AftTutorialScene.unity
     guid: 93ac16daf45194c3a96a89fe19a5c20f
   - enabled: 1
-    path: Assets/Scenes/Levels/MainScene.unity
+    path: Assets/Scenes/Levels/SandBox.unity
     guid: 38270843db691417ab596e3a084f0636
   - enabled: 1
     path: Assets/Scenes/ShopScene.unity

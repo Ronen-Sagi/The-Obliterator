@@ -21,4 +21,13 @@ public class CoinDrop : PickupDrop
             moneyManager.AddMoneyAmount(coinAmount);
         }
     }
+    
+    protected override void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            OnCollected(other.gameObject);
+            Destroy(gameObject);
+        }
+    }
 }

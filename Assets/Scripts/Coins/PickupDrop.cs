@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 /// Base class for pickup items that spawn with an initial impulse and quickly slow down,
 /// then get collected when the Player enters the trigger.
@@ -16,7 +18,7 @@ public abstract class PickupDrop : MonoBehaviour
     protected Vector2 velocity;
 
     /// Initializes the pickup with a random direction and initial velocity.
-    /// Uses <see cref="Random.insideUnitCircle"/> and normalizes it to get a unit direction.
+    /// Uses <see cref="UnityEngine.Random.insideUnitCircle"/> and normalizes it to get a unit direction.
     protected virtual void Start()
     {
         Vector2 direction = Random.insideUnitCircle.normalized;
@@ -37,12 +39,5 @@ public abstract class PickupDrop : MonoBehaviour
 
     /// Trigger callback used to detect collection by the Player.
     /// <param name="other">The collider entering this pickup's trigger.</param>
-    protected virtual void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            OnCollected(other.gameObject);
-            Destroy(gameObject);
-        }
-    }
+    protected abstract void OnTriggerEnter2D(Collider2D other);
 }

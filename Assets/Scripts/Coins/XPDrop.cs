@@ -11,4 +11,22 @@ public class XPDrop : PickupDrop
     protected override void OnCollected(GameObject player)
     {
     }
+    protected override void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            OnCollected(other.gameObject);
+            Destroy(gameObject);
+        }
+    }
+
+    protected void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            OnCollected(other.gameObject);
+            Destroy(gameObject);
+        }
+        
+    }
 }
