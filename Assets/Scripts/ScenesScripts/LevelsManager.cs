@@ -6,7 +6,7 @@ public class LevelsManager : MonoBehaviour
 {
     [SerializeField] private float levelTime = 60f; // Level time in seconds
     [SerializeField] private TextMeshProUGUI timerText;
-    [SerializeField] private string nextSceneName;
+    //[SerializeField] private string nextSceneName;
     [SerializeField] private int levelNumber = 0;
 
     private float timeRemaining;

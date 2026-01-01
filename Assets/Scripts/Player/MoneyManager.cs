@@ -4,18 +4,25 @@ using UnityEngine;
 /// Manages the player's money amount.
 public class MoneyManager : MonoBehaviour
 {
-    /// The current money balance.
-    [SerializeField] private int currentAmount = 100;
-    //private int currentAmount;
+    public static MoneyManager Instance {get ; private set;}
+    
+    [SerializeField] private int startingAmount = 100;
+    private int currentAmount;
 
-    /// <summary>
-    /// Unity lifecycle method called when the script instance is being loaded.
-    /// Currently does not modify the balance, but runs earlier than <see cref="Start"/>.
-    /// </summary>
-    void Awake() // Changed from Start to Awake to run earlier
+    private void Awake()
     {
-        //currentAmount = startingMoney;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+        
+        currentAmount = startingAmount;
+
     }
+
 
     /// Adds the provided amount to the current balance.
     /// <param name="amount">Amount to add to the current balance.</param>

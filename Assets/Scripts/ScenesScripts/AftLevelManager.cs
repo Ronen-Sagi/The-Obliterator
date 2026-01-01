@@ -66,10 +66,10 @@ public class AftLevelManager : MonoBehaviour
         switch (completedLevel)
         {
             case 1:
-                CloudAuthManager.Instance.UpdatePlayerProgress(2);
+                //CloudAuthManager.Instance.UpdatePlayerProgress(2);
                 return "Level 2";
             case 2:
-                CloudAuthManager.Instance.UpdatePlayerProgress(3);
+                //CloudAuthManager.Instance.UpdatePlayerProgress(3);
                 return "Level 3";
             case 3:
                 return "MenuScene";
