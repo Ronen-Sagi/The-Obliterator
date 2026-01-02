@@ -16,7 +16,22 @@ public class PlayerHealth : Health
     protected override void Awake()
     {
         ps = GetComponent<PlayerStats>();
-        maxHealth = ps.maxHealth;
+        SampleStats();
         base.Awake();
+    }
+
+    private void SampleStats()
+    {
+        maxHealth = ps.MaxHealth;
+    }
+
+    private void OnEnable()
+    {
+        ps.OnStatsChanged += SampleStats;
+    }
+
+    private void OnDisable()
+    {
+        ps.OnStatsChanged -= SampleStats;
     }
 }

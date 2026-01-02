@@ -12,7 +12,7 @@ public class canonMovement : MonoBehaviour
     void Awake()
     {
         ps = GetComponent<PlayerStats>();
-        rotationSpeed = ps.cannonRotationSpeed;
+        rotationSpeed = ps.CannonRotationSpeed;
     }
     /// Reads the mouse position, converts it to world space, computes the target angle,
     /// and applies a smoothed rotation to the cannon.

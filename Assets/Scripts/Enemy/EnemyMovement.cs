@@ -19,6 +19,6 @@ public class EnemyMovement : MonoBehaviour
     {
         Vector2 direction = player.transform.position - transform.position;
         direction.Normalize();
-        transform.position += (Vector3)direction * es.moveSpeed * Time.deltaTime;
+        transform.position += (Vector3)direction * es.MoveSpeed * Time.deltaTime;
     }
 }

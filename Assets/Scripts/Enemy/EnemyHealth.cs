@@ -33,7 +33,22 @@ public class EnemyHealth : Health
     protected override void Awake()
     {
         es = GetComponent<EnemyStats>();
-        maxHealth = es.maxHealth;
+        SampleStats();
         base.Awake();
+    }
+    
+    private void SampleStats()
+    {
+        maxHealth = es.MaxHealth;
+    }
+
+    private void OnEnable()
+    {
+        es.OnStatsChanged += SampleStats;
+    }
+
+    private void OnDisable()
+    {
+        es.OnStatsChanged -= SampleStats;
     }
 }

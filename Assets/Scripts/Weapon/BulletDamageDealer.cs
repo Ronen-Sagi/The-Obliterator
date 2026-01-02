@@ -15,8 +15,9 @@ public class BulletDamageDealer : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(tag))
         {
-            collision.gameObject.GetComponent<Health>()?.TakeDamage(ws.damage);
+            collision.gameObject.GetComponent<Health>()?.TakeDamage(ws.Damage);
             Destroy(gameObject);
         }
     }
+    
 }

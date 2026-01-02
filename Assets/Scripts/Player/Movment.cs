@@ -47,11 +47,16 @@ public class Movment : MonoBehaviour
         right.AddBinding("<Keyboard>/d");
         rb = GetComponent<Rigidbody2D>();
         ps = GetComponent<PlayerStats>();
-        moveSpeed = ps.moveSpeed;
-        friction = ps.friction;
+        SampleStats();
         
         originalMoveSpeed = moveSpeed;
         originalMaxMoveSpeed = maxMoveSpeed;
+    }
+
+    private void SampleStats()
+    {
+        moveSpeed = ps.MoveSpeed;
+        friction = ps.Friction;
     }
 
     /// Enables input actions when the component becomes active.
@@ -61,6 +66,7 @@ public class Movment : MonoBehaviour
         down.Enable();
         left.Enable();
         right.Enable();
+        ps.OnStatsChanged += SampleStats;
     }
 
     /// Disables input actions when the component is deactivated.
@@ -70,6 +76,7 @@ public class Movment : MonoBehaviour
         down.Disable();
         left.Disable();
         right.Disable();
+        ps.OnStatsChanged -= SampleStats;
     }
 
     /// Applies friction and processes directional input to accelerate within max speed limits.

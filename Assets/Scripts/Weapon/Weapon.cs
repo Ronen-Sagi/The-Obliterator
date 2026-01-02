@@ -17,8 +17,8 @@ public class Weapon : MonoBehaviour
     /// <param name="dir">The direction vector to set for bullet movement.</param>
     public void Initialize(Vector2 dir)
     {
-        rb.linearVelocity = dir * ws.bulletSpeed;
-        Destroy(gameObject, ws.flyTime);
+        rb.linearVelocity = dir * ws.BulletSpeed;
+        Destroy(gameObject, ws.FlyTime);
     }
 
 }

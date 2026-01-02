@@ -24,7 +24,7 @@ public class DamageDealer : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(tag))
         {
-            collision.gameObject.GetComponent<Health>()?.TakeDamage(es.damage);
+            collision.gameObject.GetComponent<Health>()?.TakeDamage(es.Damage);
         }
     }
 }
