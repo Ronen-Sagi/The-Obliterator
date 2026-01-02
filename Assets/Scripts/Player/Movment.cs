@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 /// Handles 2D player movement using the Unity Input System with WASD bindings,
 /// applying impulse forces, friction-based deceleration and a temporary speed boost.
 /// More kind of boost will be added later.
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(PlayerStats))]
 public class Movment : MonoBehaviour
 {
     private PlayerStats ps;
@@ -45,10 +47,19 @@ public class Movment : MonoBehaviour
         down.AddBinding("<Keyboard>/s");
         left.AddBinding("<Keyboard>/a");
         right.AddBinding("<Keyboard>/d");
+
         rb = GetComponent<Rigidbody2D>();
         ps = GetComponent<PlayerStats>();
-        SampleStats();
+
+        if (ps == null)
+        {
+            Debug.LogError("Movment: Missing PlayerStats component on this GameObject.", this);
+            enabled = false;
+            return;
+        }
         
+        SampleStats();
+
         originalMoveSpeed = moveSpeed;
         originalMaxMoveSpeed = maxMoveSpeed;
     }
@@ -66,7 +77,11 @@ public class Movment : MonoBehaviour
         down.Enable();
         left.Enable();
         right.Enable();
-        ps.OnStatsChanged += SampleStats;
+
+        if (ps != null)
+        {
+            ps.OnStatsChanged += SampleStats;
+        }
     }
 
     /// Disables input actions when the component is deactivated.
@@ -76,7 +91,10 @@ public class Movment : MonoBehaviour
         down.Disable();
         left.Disable();
         right.Disable();
-        ps.OnStatsChanged -= SampleStats;
+        if (ps != null)
+        {
+            ps.OnStatsChanged -= SampleStats;
+        }
     }
 
     /// Applies friction and processes directional input to accelerate within max speed limits.
