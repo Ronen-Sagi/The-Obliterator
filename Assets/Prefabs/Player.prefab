@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 5401280190908848171}
   m_Layer: 0
   m_Name: PlayerBody
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -783,7 +783,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d45e50d7f1c74418bd9ce294db69318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  rotationSpeed: 250
 --- !u!114 &8285608671456788108
 MonoBehaviour:
   m_ObjectHideFlags: 0
