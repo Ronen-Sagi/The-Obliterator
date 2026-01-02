@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    public static PlayerStats PS;
+    
     [Header("Base Stats")]
     [SerializeField] private float maxHealth = 100f;
     [SerializeField] private float moveSpeed = 5f;
@@ -11,6 +13,18 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private float friction = 5f;
 
     public event Action OnStatsChanged;
+    
+    private void Awake()
+    {
+        if (PS != null && PS != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        PS = this;
+        DontDestroyOnLoad(gameObject);
+    }
     
     public float MaxHealth
     {
