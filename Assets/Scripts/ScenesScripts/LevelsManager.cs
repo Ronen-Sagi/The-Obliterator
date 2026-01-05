@@ -9,6 +9,8 @@ public class LevelsManager : MonoBehaviour
     //[SerializeField] private string nextSceneName;
     [SerializeField] private int levelNumber = 0;
 
+    [SerializeField] private StageMusicController music;
+
     private float timeRemaining;
     private bool timerIsRunning = true;
 
@@ -16,6 +18,7 @@ public class LevelsManager : MonoBehaviour
     void Start()
     {
         timeRemaining = levelTime;
+        music.StartStageMusic(durationSeconds: levelTime, targetMaxVolume: 1f);
     }
 
     // Update is called once per frame
