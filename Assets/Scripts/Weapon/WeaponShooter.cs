@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// Represents a projectile that moves in a specified direction at a given speed.
-public class Weapon : MonoBehaviour
+public class WeaponShooter : MonoBehaviour
 {
     
     Rigidbody2D rb;
@@ -19,6 +19,7 @@ public class Weapon : MonoBehaviour
     {
         rb.linearVelocity = dir * ws.BulletSpeed;
         Destroy(gameObject, ws.FlyTime);
+        
     }
 
 }

@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 /// and aiming toward the current mouse position in world space.
 public class CannonShoot : MonoBehaviour
 {
+    
     /// Prefab of the bullet to instantiate when shooting.
     public GameObject bulletPrefab;
 
@@ -32,6 +33,6 @@ public class CannonShoot : MonoBehaviour
 
         Vector2 dir = firePoint.right; // direction the cannon is facing
 
-        bulletObj.GetComponent<Weapon>().Initialize(dir);
+        bulletObj.GetComponent<WeaponShooter>().Initialize(dir);
     }
 }
