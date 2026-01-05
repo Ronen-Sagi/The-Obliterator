@@ -1,4 +1,4 @@
-sing UnityEngine;
+using UnityEngine;
 
 [CreateAssetMenu(menuName = "Player/Player Stats Data")]
 public class PlayerStatsData : ScriptableObject
