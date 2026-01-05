@@ -234,7 +234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eba8c17b3527946e18e351a85ef9dbd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  bulletPrefab: {fileID: 6446372701890203791, guid: 291f8503ecdea4d579f537d29021d8d5, type: 3}
+  baseLoadout: {fileID: 11400000, guid: 39d9794b226815d4ab2b0ada8bd56380, type: 2}
+  weaponPrefab: {fileID: 0}
   firePoint: {fileID: 7384132737194858102}
 --- !u!1 &2135897453137690776
 GameObject:
@@ -807,11 +808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eea6600856370140a51b0a20b18b68c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  maxHealth: 50
-  moveSpeed: 3.4
-  cannonRotationSpeed: 250
-  armor: 0
-  friction: 3
+  baseStats: {fileID: 11400000, guid: dd0bda9425c5b3c46bca0379cb1018de, type: 2}
 --- !u!1 &7845923222803701700
 GameObject:
   m_ObjectHideFlags: 0

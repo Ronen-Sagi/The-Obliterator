@@ -5,13 +5,15 @@ using UnityEngine;
 public class WeaponManager : MonoBehaviour
 {
     public static WeaponManager Instance { get; private set; }
-
+    
     // HashMap: weaponId -> WeaponData
     private Dictionary<string, GameObject> weapons =
         new Dictionary<string, GameObject>();
 
     [Header("Initial Weapons")]
     [SerializeField] private List<GameObject> startingWeapons;
+    
+    GameObject currentWeapon;
 
     private void Awake()
     {
@@ -34,6 +36,7 @@ public class WeaponManager : MonoBehaviour
         {
             RegisterWeapon(weapon.name, weapon);
         }
+        currentWeapon = startingWeapons[0];
     }
 
     public void RegisterWeapon(string weaponName, GameObject weaponPrefab)
@@ -44,7 +47,7 @@ public class WeaponManager : MonoBehaviour
             return;
         }
 
-        if (weaponPrefab.CompareTag("Weapon"))
+        if (!weaponPrefab.CompareTag("Weapon"))
         {
             Debug.LogWarning("Prefab is not tagged as Weapon");
         }
@@ -63,6 +66,13 @@ public class WeaponManager : MonoBehaviour
         Debug.LogWarning($"Weapon '{weaponName}' not found");
         return null;
     }
+    
+    public GameObject CurrentWeapon
+    {
+        get => currentWeapon;
+        set => currentWeapon = value;
+    }
+    
 
     public bool HasWeapon(string weaponName)
     {

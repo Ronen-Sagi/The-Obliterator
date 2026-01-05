@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5143604734911693737}
   - component: {fileID: 3722969793358696904}
   m_Layer: 0
-  m_Name: LaserShooter
+  m_Name: PlasmaCannon
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -215,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ee02381520d1bb4a93a8909a7cf253d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  weaponData: {fileID: 11400000, guid: 33ccb5e0881aef04899f48e198ac8fbb, type: 2}
+  weaponData: {fileID: 11400000, guid: dc63b7eec8f2f06479cfce27faffb6ea, type: 2}
   bulletPrefab: {fileID: 0}
   fireRate: 0.5
   damage: 10

@@ -28,7 +28,7 @@ public class WeaponData : ScriptableObject
 
 public enum WeaponName
 {
-    LaserShooter,
+    PlasmaCannon,
     Blaster,
     Sniper
 }
