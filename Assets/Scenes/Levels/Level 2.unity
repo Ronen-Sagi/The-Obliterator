@@ -739,7 +739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6978d5d0209744341b4193d6841bab97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  levelTime: 10
+  levelTime: 80
   timerText: {fileID: 1304310445}
   levelNumber: 2
   music: {fileID: 998231848}
