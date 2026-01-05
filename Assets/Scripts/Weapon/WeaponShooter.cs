@@ -6,9 +6,11 @@ public class WeaponShooter : MonoBehaviour
     
     Rigidbody2D rb;
     WeaponStats ws;
+    AudioSource audioSource;
 
     void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         ws = GetComponent<WeaponStats>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -18,6 +20,7 @@ public class WeaponShooter : MonoBehaviour
     public void Initialize(Vector2 dir)
     {
         rb.linearVelocity = dir * ws.BulletSpeed;
+        audioSource.PlayOneShot(ws.ShootSound);
         Destroy(gameObject, ws.FlyTime);
         
     }

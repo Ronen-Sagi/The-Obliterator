@@ -21,6 +21,9 @@ public class WeaponData : ScriptableObject
 
     [Header("Visuals")]
     public Sprite icon;
+    
+    [Header("Audio")]
+    public AudioClip shootSound;
 }
 
 public enum WeaponName
