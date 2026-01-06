@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e0e7183ada0404a2c8ecd0e6578bac06
+guid: ba648f77e9ec444b4adf5effd9a9bfbf
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -116,10 +116,10 @@ TextureImporter:
       name: StrongEnemy_0
       rect:
         serializedVersion: 2
-        x: 882
-        y: 358
-        width: 1041
-        height: 1015
+        x: 812
+        y: 298
+        width: 1049
+        height: 1187
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

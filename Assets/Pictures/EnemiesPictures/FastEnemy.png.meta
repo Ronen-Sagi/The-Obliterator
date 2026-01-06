@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5610735c549a54c83a1172a1e5d15b03
+guid: 13a4e2901c4554356ad43efa4caa62ac
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -116,10 +116,10 @@ TextureImporter:
       name: FastEnemy_0
       rect:
         serializedVersion: 2
-        x: 1256
-        y: 496
-        width: 584
-        height: 637
+        x: 776
+        y: 198
+        width: 1116
+        height: 1172
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
