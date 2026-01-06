@@ -12,12 +12,14 @@ public class ShopManeger : MonoBehaviour
 
     /// Text element used to show purchase confirmation messages.
     [SerializeField] private TextMeshProUGUI purchaseText;
+    [SerializeField] private Text purchaseTxt;
 
     /// Duration that the purchaseText remains visible.
     [SerializeField] private float textDuration = 2f;
 
     /// Text element used to show the player's current money amount.
     [SerializeField] private TextMeshProUGUI amountText;
+    [SerializeField] private Text amountTxt;
 
     /// Text elements showing each item's price in the shop UI.
     [SerializeField] private TextMeshProUGUI bulletPriceText;
@@ -50,9 +52,13 @@ public class ShopManeger : MonoBehaviour
         moneyManager = MoneyManager.Instance;
         if (purchaseText != null)
         {
-            purchaseText.gameObject.SetActive(false);
+            //purchaseText.gameObject.SetActive(false);
         }
-
+        if (purchaseTxt != null)
+        {
+            purchaseTxt.gameObject.SetActive(false);
+        }
+        
         UpdateAmountText();
         UpdatePriceTexts();
     }
@@ -65,10 +71,12 @@ public class ShopManeger : MonoBehaviour
             textTimer -= Time.deltaTime;
             if (textTimer <= 0f)
             {
-                purchaseText.gameObject.SetActive(false);
+                //purchaseText.gameObject.SetActive(false);
+                purchaseTxt.gameObject.SetActive(false);
                 isTextActive = false;
             }
         }
+        
 
         UpdateAmountText();
     }
@@ -142,10 +150,12 @@ public class ShopManeger : MonoBehaviour
     /// <param name="message">Message to display (confirmation or error).</param>
     private void ShowPurchaseText(string message)
     {
-        if (purchaseText != null)
+        if (purchaseText != null || purchaseTxt != null)
         {
-            purchaseText.text = message;
-            purchaseText.gameObject.SetActive(true);
+            //purchaseText.text = message;
+            purchaseTxt.text = message;
+            purchaseTxt.gameObject.SetActive(true);
+            //purchaseText.gameObject.SetActive(true);
             textTimer = textDuration;
             isTextActive = true;
         }
@@ -158,6 +168,10 @@ public class ShopManeger : MonoBehaviour
         if (amountText != null && moneyManager != null)
         {
             amountText.text = "You have: " + moneyManager.GetMoneyAmount().ToString() + "$";
+        }
+        if (amountTxt != null && moneyManager != null)
+        {
+            amountTxt.text = "You have: " + moneyManager.GetMoneyAmount() + "$";
         }
     }
 
