@@ -12,16 +12,23 @@ public class CannonShoot : MonoBehaviour
 
     /// Transform representing the spawn location and rotation for bullets.
     public Transform firePoint;
+    
+    private float timer = 0f;
     void Awake()
     {
         EquipWeapon(wp.CurrentWeapon);
+        //Debug.Log("Equipped weapon: " + wp.CurrentWeapon.name);
+        //Debug.Log("Firerate: " + wp.CurrentWeapon.GetComponent<WeaponStats>().FireRate);
     }
 
     /// Checks for a left mouse button press and triggers a shot.
     void Update()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        timer += Time.deltaTime;
+        if (Mouse.current.leftButton.isPressed &&
+            timer>= wp.CurrentWeapon.GetComponent<WeaponStats>().FireRate)
         {
+            timer = 0f;
             Shoot();
         }
     }

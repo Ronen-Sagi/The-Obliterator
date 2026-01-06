@@ -100,25 +100,25 @@ public class Movment : MonoBehaviour
     /// Applies friction and processes directional input to accelerate within max speed limits.
     void Update()
     {
-        rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, Vector2.zero, friction * Time.deltaTime);
+        rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, Vector2.zero, ps.Friction * Time.deltaTime);
         if (up.IsPressed() && rb.linearVelocity.y < maxMoveSpeed)
         {
-            rb.AddForce(Vector2.up * moveSpeed, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * ps.MoveSpeed, ForceMode2D.Impulse);
         }
 
         if (down.IsPressed() && rb.linearVelocity.y > -maxMoveSpeed)
         {
-            rb.AddForce(Vector2.down * moveSpeed, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.down * ps.MoveSpeed, ForceMode2D.Impulse);
         }
 
         if (left.IsPressed() && rb.linearVelocity.x > -maxMoveSpeed)
         {
-            rb.AddForce(Vector2.left * moveSpeed, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.left * ps.MoveSpeed, ForceMode2D.Impulse);
         }
 
         if (right.IsPressed() && rb.linearVelocity.x < maxMoveSpeed)
         {
-            rb.AddForce(Vector2.right * moveSpeed, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.right * ps.MoveSpeed, ForceMode2D.Impulse);
         }
     }
 

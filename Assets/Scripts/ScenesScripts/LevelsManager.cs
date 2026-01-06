@@ -61,7 +61,7 @@ public class LevelsManager : MonoBehaviour
         }
 
         PlayerPrefs.Save();
-        Debug.Log($"Level {levelNumber} completed! Saved progression.");
+        //Debug.Log($"Level {levelNumber} completed! Saved progression.");
 
         // Load the generic after-level scene
         SceneManager.LoadScene("AftLevel");

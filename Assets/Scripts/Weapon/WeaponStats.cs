@@ -9,11 +9,11 @@ public class WeaponStats : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     
     [Header("Stats")]
-    [SerializeField] private float fireRate;
-    [SerializeField] private float damage;
-    [SerializeField] private float flyTime;
-    [SerializeField] private int bulletCount;
-    [SerializeField] private float bulletSpeed;
+    private float fireRate;
+    private float damage;
+    private float flyTime;
+    private int bulletCount;
+    private float bulletSpeed;
     
     [Header("Audio")]
     [SerializeField] private AudioClip shootSound;
@@ -23,7 +23,7 @@ public class WeaponStats : MonoBehaviour
         LoadWeaponData(weaponData);
     }
     
-    private void LoadWeaponData(WeaponData data)
+    public void LoadWeaponData(WeaponData data)
     {
         if (data == null) return;
         

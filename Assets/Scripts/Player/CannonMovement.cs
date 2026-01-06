@@ -45,10 +45,26 @@ public class CannonMovement : MonoBehaviour
         float angle = Mathf.MoveTowardsAngle(
             transform.eulerAngles.z,
             targetAngle,
-            rotationSpeed * Time.deltaTime // degrees per second
+            ps.CannonRotationSpeed * Time.deltaTime // degrees per second
         );
 
         // Apply the interpolated rotation around the Z axis.
         transform.rotation = Quaternion.Euler(0, 0, angle);
+    }
+    
+    void OnEnable()
+    {
+        ps.OnStatsChanged += SampleStats;
+        SampleStats();
+    }
+
+    void OnDisable()
+    {
+        ps.OnStatsChanged -= SampleStats;
+    }
+
+    private void SampleStats()
+    {
+        rotationSpeed = ps.CannonRotationSpeed;
     }
 }
