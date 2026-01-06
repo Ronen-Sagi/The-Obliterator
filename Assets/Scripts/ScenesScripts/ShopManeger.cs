@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class ShopManeger : MonoBehaviour
 {
@@ -24,6 +25,11 @@ public class ShopManeger : MonoBehaviour
     [SerializeField] private TextMeshProUGUI shieldPriceText;
     [SerializeField] private TextMeshProUGUI tiresPriceText;
     [SerializeField] private TextMeshProUGUI powerUpPriceText;
+    
+    [SerializeField] private Text bulletPriceTxt;
+    [SerializeField] private Text shieldPriceTxt;
+    [SerializeField] private Text tiresPriceTxt;
+    [SerializeField] private Text powerUpPriceTxt;
 
     /// Prices for the different shop items.
     [SerializeField] private int bulletPrice = 30;
@@ -177,6 +183,23 @@ public class ShopManeger : MonoBehaviour
         if (powerUpPriceText != null)
         {
             powerUpPriceText.text = powerUpPrice.ToString() + "$";
+        }
+        
+        if (bulletPriceTxt != null)
+        {
+            bulletPriceTxt.text = bulletPrice + "$";
+        }
+        if (shieldPriceTxt != null)
+        {
+            shieldPriceTxt.text = shieldPrice + "$";
+        }
+        if (tiresPriceTxt != null)
+        {
+            tiresPriceTxt.text = tiresPrice + "$";
+        }
+        if (powerUpPriceTxt != null)
+        {
+            powerUpPriceTxt.text = powerUpPrice + "$";
         }
     }
 }
