@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cd3e3816fb0594977a8682ea13971987
+guid: a6d53e29efde94d669952b89f02557ac
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -116,10 +116,10 @@ TextureImporter:
       name: BasicEnemy_0
       rect:
         serializedVersion: 2
-        x: 762
-        y: 272
-        width: 1119
-        height: 1095
+        x: 942
+        y: 415
+        width: 926
+        height: 904
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
