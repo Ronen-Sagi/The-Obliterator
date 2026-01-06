@@ -216,6 +216,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 489b045b539ccae438f03a324ef2d81f, type: 3}
+--- !u!114 &87834874 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6410667272787291014, guid: 489b045b539ccae438f03a324ef2d81f, type: 3}
+  m_PrefabInstance: {fileID: 87834873}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
 --- !u!1001 &232392073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -730,6 +741,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   levelTime: 110
   timerText: {fileID: 1850050157}
+  timerTxt: {fileID: 87834874}
   levelNumber: 3
   music: {fileID: 959935861}
 --- !u!4 &1568491538

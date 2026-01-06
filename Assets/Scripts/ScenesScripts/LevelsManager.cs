@@ -1,11 +1,13 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelsManager : MonoBehaviour
 {
     [SerializeField] private float levelTime = 60f; // Level time in seconds
     [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private Text timerTxt;
     //[SerializeField] private string nextSceneName;
     [SerializeField] private int levelNumber = 0;
 
@@ -42,7 +44,8 @@ public class LevelsManager : MonoBehaviour
     {
         int minutes = Mathf.FloorToInt(timeRemaining / 60);
         int seconds = Mathf.FloorToInt(timeRemaining % 60);
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        //timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timerTxt.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     void OnTimerComplete()

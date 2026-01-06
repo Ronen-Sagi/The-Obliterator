@@ -519,6 +519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   levelTime: 5
   timerText: {fileID: 497731754}
+  timerTxt: {fileID: 1720435022}
   levelNumber: 1
   music: {fileID: 1715756360}
 --- !u!4 &1568491538
@@ -547,6 +548,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c4e63f0f99374dffbabde1732dc29d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StageMusicController
+--- !u!114 &1720435022 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6410667272787291014, guid: 489b045b539ccae438f03a324ef2d81f, type: 3}
+  m_PrefabInstance: {fileID: 4302321516118537799}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Text
 --- !u!1001 &879681246425432744
 PrefabInstance:
   m_ObjectHideFlags: 0
