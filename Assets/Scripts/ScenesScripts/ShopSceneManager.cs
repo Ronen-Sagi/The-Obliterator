@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 /// Controls the Shop scene UI and navigation.
 public class ShopSceneManager : MonoBehaviour
 {
     /// Reference to the UI text used for the "Continue" button label.
     [SerializeField] private TextMeshProUGUI nextLevelButtonText;
+    [SerializeField] private Text nextLevelText;
 
     /// Updates the next level button label to reflect current progression.
     void Start()
@@ -23,6 +25,10 @@ public class ShopSceneManager : MonoBehaviour
         if (nextLevelButtonText != null)
         {
             nextLevelButtonText.text = $"Continue to {nextLevel}";
+        }
+        if (nextLevelText != null)
+        {
+            nextLevelText.text = $"Continue to {nextLevel}";
         }
 
         // Diagnostic logging for verification in the Console.

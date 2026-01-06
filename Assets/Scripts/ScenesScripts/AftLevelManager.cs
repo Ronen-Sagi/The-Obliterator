@@ -1,15 +1,18 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 /// Manages the "after level" (post\-\-completion) UI and navigation flow.
 public class AftLevelManager : MonoBehaviour
 {
     /// UI text element used to display the completion title.
     [SerializeField] private TextMeshProUGUI titleText;
+    [SerializeField] private Text titleTextUI;
 
     /// UI text element used to label the "next level" button.
     [SerializeField] private TextMeshProUGUI nextLevelButtonText;
+    [SerializeField] private Text nextLevelText;
 
     /// The last level index that was completed, loaded from <see cref="PlayerPrefs"/>.
     private int lastCompletedLevel;
@@ -33,11 +36,20 @@ public class AftLevelManager : MonoBehaviour
         {
             titleText.text = $"Level {lastCompletedLevel} Complete!";
         }
+        if (titleTextUI != null)
+        {
+            titleTextUI.text = $"Level {lastCompletedLevel} Complete!";
+        }
 
         // Update the button label if assigned in the Inspector.
         if (nextLevelButtonText != null)
         {
             nextLevelButtonText.text = $"Continue to {nextLevelSceneName}";
+        }
+
+        if (nextLevelText != null)
+        {
+            nextLevelText.text = $"Continue to {nextLevelSceneName}";
         }
 
         // Diagnostic logging for verification in the Console.
@@ -66,10 +78,10 @@ public class AftLevelManager : MonoBehaviour
         switch (completedLevel)
         {
             case 1:
-                //CloudAuthManager.Instance.UpdatePlayerProgress(2);
+                //CloudAuthManager.Instance.UpdatePlayerProgress(2);  cloud save progress
                 return "Level 2";
             case 2:
-                //CloudAuthManager.Instance.UpdatePlayerProgress(3);
+                //CloudAuthManager.Instance.UpdatePlayerProgress(3);  cloud save progress
                 return "Level 3";
             case 3:
                 return "MenuScene";
