@@ -19,7 +19,7 @@ public class CoinDrop : PickupDrop
             MoneyManager.Instance.AddMoneyAmount(coinAmount);
 
             if (coinSound != null)
-                AudioSource.PlayClipAtPoint(coinSound, transform.position, 1f);
+                AudioSource.PlayClipAtPoint(coinSound, transform.position, 10f);
         }
     }
 }
