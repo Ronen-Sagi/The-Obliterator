@@ -5,10 +5,12 @@ using UnityEngine.InputSystem;
 /// and aiming toward the current mouse position in world space.
 public class CannonShoot : MonoBehaviour
 {
-    WeaponManager wp = WeaponManager.Instance;
+    WeaponManager wm = WeaponManager.Instance;
     
     /// Prefab of the bullet to instantiate when shooting.
     private GameObject weaponPrefab;
+    private WeaponStats ws;
+    private GameObject projectilePrefab;
 
     /// Transform representing the spawn location and rotation for bullets.
     public Transform firePoint;
@@ -16,9 +18,10 @@ public class CannonShoot : MonoBehaviour
     private float timer = 0f;
     void Awake()
     {
-        EquipWeapon(wp.CurrentWeapon);
-        //Debug.Log("Equipped weapon: " + wp.CurrentWeapon.name);
-        //Debug.Log("Firerate: " + wp.CurrentWeapon.GetComponent<WeaponStats>().FireRate);
+        EquipWeapon(wm.CurrentWeapon);
+        ws = weaponPrefab.GetComponent<WeaponStats>();
+        Debug.Log("Equipped weapon: " + weaponPrefab.name);
+        Debug.Log("Firerate: " + weaponPrefab.GetComponent<WeaponStats>().FireRate);
     }
 
     /// Checks for a left mouse button press and triggers a shot.
@@ -26,7 +29,7 @@ public class CannonShoot : MonoBehaviour
     {
         timer += Time.deltaTime;
         if (Mouse.current.leftButton.isPressed &&
-            timer>= wp.CurrentWeapon.GetComponent<WeaponStats>().FireRate)
+            timer>= wm.CurrentWeapon.GetComponent<WeaponStats>().FireRate)
         {
             timer = 0f;
             Shoot();
@@ -37,15 +40,20 @@ public class CannonShoot : MonoBehaviour
     /// based on the mouse cursor position converted to world space.
     void Shoot()
     {
-        GameObject bulletObj = Instantiate(
-            weaponPrefab,
+        GameObject projectileObj = Instantiate(
+            ws.ProjectilePrefab,
             firePoint.position,
             firePoint.rotation
         );
 
         Vector2 dir = firePoint.right; // direction the cannon is facing
 
-        bulletObj.GetComponent<WeaponShooter>().Initialize(dir);
+        projectileObj.GetComponent<Projectile>().Initialize(dir, 
+            ws.BulletSpeed, 
+            ws.Damage, 
+            ws.FlyTime,
+            ws.ShootSound
+        );
     }
     
     public void EquipWeapon(GameObject newWeaponPrefab)

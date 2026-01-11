@@ -215,14 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ee02381520d1bb4a93a8909a7cf253d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  weaponData: {fileID: 11400000, guid: 7617dcb05b90b6f4d9c773130f34e59b, type: 2}
-  bulletPrefab: {fileID: 0}
-  fireRate: 0.5
-  damage: 10
-  flyTime: 2
-  bulletCount: 1
-  bulletSpeed: 5
-  shootSound: {fileID: 0}
+  baseData: {fileID: 11400000, guid: 7617dcb05b90b6f4d9c773130f34e59b, type: 2}
 --- !u!114 &8919547826274219391
 MonoBehaviour:
   m_ObjectHideFlags: 0

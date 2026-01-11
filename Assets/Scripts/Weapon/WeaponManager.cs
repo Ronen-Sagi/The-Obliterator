@@ -34,6 +34,7 @@ public class WeaponManager : MonoBehaviour
     {
         foreach (var weapon in startingWeapons)
         {
+            weapon.GetComponent<WeaponStats>().Initialize();
             RegisterWeapon(weapon.name, weapon);
         }
         currentWeapon = startingWeapons[0];

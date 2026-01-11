@@ -17,11 +17,11 @@ public class WeaponShooter : MonoBehaviour
 
     /// Initializes the bullet's movement direction.
     /// <param name="dir">The direction vector to set for bullet movement.</param>
-    public void Initialize(Vector2 dir)
+    public void Initialize(Vector2 dir, float damage, float speed, float flyTime)
     {
-        rb.linearVelocity = dir * ws.BulletSpeed;
+        rb.linearVelocity = dir * speed;
         audioSource.PlayOneShot(ws.ShootSound);
-        Destroy(gameObject, ws.FlyTime);
+        Destroy(gameObject, flyTime);
         
     }
 

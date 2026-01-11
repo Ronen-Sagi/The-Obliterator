@@ -12,13 +12,10 @@ GameObject:
   - component: {fileID: 6589000271318946719}
   - component: {fileID: 5350671230740538115}
   - component: {fileID: 4786212170874862251}
-  - component: {fileID: 1444267956391261214}
-  - component: {fileID: 7050464678841533657}
-  - component: {fileID: 8919547826274219391}
-  - component: {fileID: 5143604734911693737}
-  - component: {fileID: 3722969793358696904}
+  - component: {fileID: -7522937255265997463}
+  - component: {fileID: 6454971765230829203}
   m_Layer: 0
-  m_Name: Sniper
+  m_Name: PlasmaCannonProjectile
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -191,57 +188,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1444267956391261214
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6446372701890203791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25950171ef92d4e46ae36d1b4f951d2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
---- !u!114 &7050464678841533657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6446372701890203791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ee02381520d1bb4a93a8909a7cf253d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  baseData: {fileID: 11400000, guid: 33ccb5e0881aef04899f48e198ac8fbb, type: 2}
---- !u!114 &8919547826274219391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6446372701890203791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 295142f649928c44987ce1b691c880ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
---- !u!114 &5143604734911693737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6446372701890203791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ac9a435018b584dbbead2ca6d4fc1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  tag: Enemy
---- !u!82 &3722969793358696904
+--- !u!82 &-7522937255265997463
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -253,7 +200,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: fffe62c54997243b384cc951d1c2222a, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -338,3 +285,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6454971765230829203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6446372701890203791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d08d0fac2e6c044aa6ae96c842862dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'

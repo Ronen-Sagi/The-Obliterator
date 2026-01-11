@@ -3,98 +3,46 @@ using UnityEngine;
 
 public class WeaponStats : MonoBehaviour
 {
-    [SerializeField] private WeaponData weaponData;
-    
-    [Header("Visuals")]
-    [SerializeField] private GameObject bulletPrefab;
-    
-    [Header("Stats")]
-    private float fireRate;
-    private float damage;
-    private float flyTime;
-    private int bulletCount;
-    private float bulletSpeed;
-    
-    [Header("Audio")]
-    [SerializeField] private AudioClip shootSound;
-    
-    private void Awake()
-    {
-        LoadWeaponData(weaponData);
-    }
-    
-    public void LoadWeaponData(WeaponData data)
-    {
-        if (data == null) return;
-        
-        bulletPrefab = data.bulletPrefab;
-        fireRate = data.fireRate;
-        damage = data.damage;
-        flyTime = data.flyTime;
-        bulletCount = data.bulletCount;
-        bulletSpeed = data.bulletSpeed;
-        shootSound = data.shootSound;
-    }
-    
+    [SerializeField] private WeaponData baseData;
+    private WeaponData runtimeData;
+
     public event Action OnStatChanged;
 
-    public float FireRate
+    public void Initialize()
     {
-        get => fireRate;
-        set
-        {
-            fireRate = value;
-            Notify();
-        }
-    }
-    public float Damage
-    {
-        get => damage;
-        set
-        {
-            damage = value;
-            Notify();
-        }
+        // Runtime-safe clone
+        runtimeData = Instantiate(baseData);
+        Notify();
+        Debug.Log(runtimeData.name + " initialized.");
     }
 
-    public float FlyTime
+    public GameObject ProjectilePrefab => runtimeData.bulletPrefab;
+    public float FireRate => runtimeData.fireRate;
+    public float Damage => runtimeData.damage;
+    public float FlyTime => runtimeData.flyTime;
+    public int BulletCount => runtimeData.bulletCount;
+    public float BulletSpeed => runtimeData.bulletSpeed;
+    public AudioClip ShootSound => runtimeData.shootSound;
+
+    // MODIFIERS
+    public void AddDamage(float value)
     {
-        get => flyTime;
-        set
-        {
-            flyTime = value;
-            Notify();
-        }
+        runtimeData.damage += value;
+        Notify();
     }
-    public int BulletCount
+
+    public void AddFireRate(float value)
     {
-        get => bulletCount;
-        set
-        {
-            bulletCount = value;
-            Notify();
-        }
+        runtimeData.fireRate += value;
+        Notify();
     }
-    public float BulletSpeed
+
+    public void AddBulletCount(int value)
     {
-        get => bulletSpeed;
-        set
-        {
-            bulletSpeed = value;
-            Notify();
-        }
+        runtimeData.bulletCount += value;
+        Notify();
     }
-    
-    public AudioClip ShootSound
-    {
-        get => shootSound;
-        set
-        {
-            shootSound = value;
-            Notify();
-        }
-    }
-    
+
     private void Notify()
     {
         OnStatChanged?.Invoke();
