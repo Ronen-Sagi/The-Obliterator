@@ -571,6 +571,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AdvencedEnemySpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 1000352793606021084, guid: b324c79b206f44d3dbfab6d7b6b99218, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3612640696975920693, guid: b324c79b206f44d3dbfab6d7b6b99218, type: 3}
       propertyPath: spawnAreaMax.x
       value: 14.5

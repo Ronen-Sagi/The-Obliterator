@@ -1,5 +1,5 @@
 using UnityEngine;
-using System.Collections. Generic;
+using System.Collections.Generic;
 
 /// Advanced enemy spawner that spawns enemies at random positions with progressive difficulty
 public class AdvancedEnemySpawner : MonoBehaviour
@@ -14,14 +14,20 @@ public class AdvancedEnemySpawner : MonoBehaviour
     [SerializeField] private Vector2 spawnAreaMin = new Vector2(-14.5f, -14f);
     [SerializeField] private Vector2 spawnAreaMax = new Vector2(14.5f, 14f);
     
+    [Header("Wall Buffer Zone")]
+    [SerializeField] private float wallBuffer = 1.5f;
+    
     [Header("Player Buffer Zone")]
     [SerializeField] private Transform playerTransform;
-    [SerializeField] private float bufferRadius = 3f; // Enemies won't spawn within this distance from player
+    [SerializeField] private float bufferRadius = 3f;
+    
+    [Header("Enemy Separation")]
+    [SerializeField] private float minEnemyDistance = 1.0f; // Minimum distance between spawned enemies
 
     [Header("Enemy Type Progression (in seconds)")]
-    [SerializeField] private float fastEnemyStartTime = 30f;  // When FastEnemy starts spawning
-    [SerializeField] private float strongEnemyStartTime = 60f; // When StrongEnemy starts spawning
-    [SerializeField] private float basicEnemyEndTime = 45f;    // When BasicEnemy stops spawning (-1 = never stops)
+    [SerializeField] private float fastEnemyStartTime = 30f;
+    [SerializeField] private float strongEnemyStartTime = 60f;
+    [SerializeField] private float basicEnemyEndTime = 45f;
 
     [Header("Enemy Type Weights (0-100)")]
     [SerializeField] private float basicEnemyWeight = 100f;
@@ -50,7 +56,7 @@ public class AdvancedEnemySpawner : MonoBehaviour
         
         if (enemyToSpawn == null)
         {
-            Debug.LogWarning("No valid enemy type to spawn at this time!");
+            Debug. LogWarning("No valid enemy type to spawn at this time!");
             return;
         }
 
@@ -64,21 +70,18 @@ public class AdvancedEnemySpawner : MonoBehaviour
         List<GameObject> availableEnemies = new List<GameObject>();
         List<float> weights = new List<float>();
 
-        // Check if BasicEnemy is available
         if (basicEnemyPrefab != null && (basicEnemyEndTime < 0 || elapsedTime < basicEnemyEndTime))
         {
             availableEnemies.Add(basicEnemyPrefab);
-            weights. Add(basicEnemyWeight);
+            weights.Add(basicEnemyWeight);
         }
 
-        // Check if FastEnemy is available
         if (fastEnemyPrefab != null && elapsedTime >= fastEnemyStartTime)
         {
             availableEnemies.Add(fastEnemyPrefab);
             weights.Add(fastEnemyWeight);
         }
 
-        // Check if StrongEnemy is available
         if (strongEnemyPrefab != null && elapsedTime >= strongEnemyStartTime)
         {
             availableEnemies.Add(strongEnemyPrefab);
@@ -88,11 +91,9 @@ public class AdvancedEnemySpawner : MonoBehaviour
         if (availableEnemies.Count == 0)
             return null;
 
-        // Weighted random selection
         return GetWeightedRandomEnemy(availableEnemies, weights);
     }
 
-    /// Returns a random enemy based on weights
     GameObject GetWeightedRandomEnemy(List<GameObject> enemies, List<float> weights)
     {
         float totalWeight = 0f;
@@ -112,17 +113,21 @@ public class AdvancedEnemySpawner : MonoBehaviour
         return enemies[enemies.Count - 1];
     }
 
-    /// Gets a random spawn position within bounds, avoiding the player buffer zone
+    /// Gets a random spawn position within bounds, avoiding walls, player, and other enemies
     Vector2 GetRandomSpawnPosition()
     {
         Vector2 randomPosition;
         int maxAttempts = 30;
         int attempts = 0;
 
+        // Calculate safe spawn area (away from walls)
+        Vector2 safeMin = spawnAreaMin + Vector2.one * wallBuffer;
+        Vector2 safeMax = spawnAreaMax - Vector2.one * wallBuffer;
+
         do
         {
-            float x = Random.Range(spawnAreaMin.x, spawnAreaMax.x);
-            float y = Random.Range(spawnAreaMin.y, spawnAreaMax.y);
+            float x = Random.Range(safeMin.x, safeMax.x);
+            float y = Random.Range(safeMin.y, safeMax. y);
             randomPosition = new Vector2(x, y);
             attempts++;
 
@@ -132,7 +137,9 @@ public class AdvancedEnemySpawner : MonoBehaviour
                 break;
             }
 
-        } while (IsPositionTooCloseToPlayer(randomPosition));
+        } while (IsPositionTooCloseToPlayer(randomPosition) || 
+                 IsPositionInsideWall(randomPosition) || 
+                 IsPositionTooCloseToEnemy(randomPosition));
 
         return randomPosition;
     }
@@ -147,20 +154,59 @@ public class AdvancedEnemySpawner : MonoBehaviour
         return distance < bufferRadius;
     }
 
-    /// Visualizes spawn area and buffer zone in the editor
+    /// Checks if a position overlaps with a wall or obstacle
+    bool IsPositionInsideWall(Vector2 position)
+    {
+        Collider2D hit = Physics2D.OverlapCircle(position, 0.5f);
+        
+        if (hit != null && hit.CompareTag("Wall"))
+        {
+            return true;
+        }
+        
+        return false;
+    }
+
+    /// Checks if a position is too close to an existing enemy
+    bool IsPositionTooCloseToEnemy(Vector2 position)
+    {
+        // Check for any enemies within the minimum distance
+        Collider2D[] nearbyColliders = Physics2D.OverlapCircleAll(position, minEnemyDistance);
+        
+        foreach (Collider2D collider in nearbyColliders)
+        {
+            // If we find an enemy tag, position is too close
+            if (collider.CompareTag("Enemy"))
+            {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+
+    /// Visualizes spawn area and buffer zones in the editor
     void OnDrawGizmosSelected()
     {
-        // Draw spawn area
-        Gizmos. color = Color.green;
+        // Draw original spawn area (red)
+        Gizmos.color = Color. red;
         Vector3 center = new Vector3((spawnAreaMin.x + spawnAreaMax.x) / 2f, (spawnAreaMin.y + spawnAreaMax.y) / 2f, 0f);
-        Vector3 size = new Vector3(spawnAreaMax.x - spawnAreaMin.x, spawnAreaMax. y - spawnAreaMin.y, 0f);
+        Vector3 size = new Vector3(spawnAreaMax. x - spawnAreaMin.x, spawnAreaMax.y - spawnAreaMin.y, 0f);
         Gizmos.DrawWireCube(center, size);
 
-        // Draw player buffer zone
+        // Draw safe spawn area (green) - away from walls
+        Gizmos.color = Color.green;
+        Vector2 safeMin = spawnAreaMin + Vector2.one * wallBuffer;
+        Vector2 safeMax = spawnAreaMax - Vector2.one * wallBuffer;
+        Vector3 safeCenter = new Vector3((safeMin.x + safeMax.x) / 2f, (safeMin.y + safeMax.y) / 2f, 0f);
+        Vector3 safeSize = new Vector3(safeMax. x - safeMin.x, safeMax.y - safeMin.y, 0f);
+        Gizmos.DrawWireCube(safeCenter, safeSize);
+
+        // Draw player buffer zone (yellow)
         if (playerTransform != null)
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(playerTransform.position, bufferRadius);
+            Gizmos.color = Color.yellow;
+            Gizmos. DrawWireSphere(playerTransform.position, bufferRadius);
         }
     }
 }
