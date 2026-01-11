@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f034e62419a57048817280cc96fa658, type: 3}
   m_Name: SniperData
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
-  weaponName: 0
+  weaponName: 2
   bulletPrefab: {fileID: 0}
   fireRate: 1
-  damage: 10
+  damage: 15
   flyTime: 2
   bulletCount: 1
   bulletSpeed: 20
