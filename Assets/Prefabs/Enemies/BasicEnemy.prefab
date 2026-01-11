@@ -192,7 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   enemyPrefab: {fileID: 0}
   damage: 10
-  moveSpeed: 2
+  moveSpeed: 4.5
   maxHealth: 20
 --- !u!60 &1958093237510971204
 PolygonCollider2D:
