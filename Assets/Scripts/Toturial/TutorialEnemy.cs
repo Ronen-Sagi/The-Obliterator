@@ -18,7 +18,7 @@ public class TutorialEnemy : MonoBehaviour
     /// <param name="other">The collider that entered this trigger.</param>
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Bullet"))
+        if (other.CompareTag("Weapon"))
         {
             if (tutorialManager != null)
             {
