@@ -94,7 +94,7 @@ public class MoneyDisplayUI : MonoBehaviour
     void UpdateMoneyDisplay()
     {
         int currentMoney = moneyManager.GetMoneyAmount();
-        string displayText = moneyPrefix + currentMoney.ToString();
+        string displayText = "$" + currentMoney;
 
         // Update Legacy UI Text if assigned
         if (moneyText != null)
