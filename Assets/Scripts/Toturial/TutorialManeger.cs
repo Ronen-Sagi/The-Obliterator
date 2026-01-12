@@ -232,7 +232,7 @@ public class TutorialManager : MonoBehaviour
 
         foreach (GameObject enemy in remainingEnemies)
         {
-            float randomDelay = Random.Range(0f, 2f);
+            float randomDelay = Random.Range(0f, 1.8f);
             Destroy(enemy, randomDelay);
         }
     }

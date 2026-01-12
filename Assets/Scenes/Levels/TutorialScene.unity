@@ -1318,7 +1318,8 @@ MonoBehaviour:
   - {fileID: 962927146}
   - {fileID: 1861868984}
   instructions:
-  - Use WASD keys to move your character.\n Touch the dot to continue
+  - Use the WASD keys to move your character toward the glowing dot.\n Reach the
+    dot to continue.
   - Great! Now move to the socond dot
   - Now let's learn to shoot!\n Aim with the mouse and click on the left button to
     shoot at the enemy
