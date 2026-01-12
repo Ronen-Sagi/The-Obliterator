@@ -30,6 +30,8 @@ public class TutorialManager : MonoBehaviour
 
     /// Reference to the kill counter that tracks enemy kills in the post-tutorial phase.
     [SerializeField] private TutorialKillCounter killCounter;
+    
+    [SerializeField] private float timeFinalMassage = 4f;
 
     /// Index of the next dot the player should touch.
     private int currentDotIndex = 0;
@@ -208,7 +210,7 @@ public class TutorialManager : MonoBehaviour
             
             instructionText.text = "Well done! Tutorial complete. ";
             RemoveRemainingEnemiesRandomly();
-            Invoke(nameof(TutorialEnd), 5f);
+            Invoke(nameof(TutorialEnd), timeFinalMassage);
         }
     }
     
@@ -216,8 +218,8 @@ public class TutorialManager : MonoBehaviour
     private void DisableAllEnemySpawners()
     {
         // Find all EnemySpawner components in the scene and disable them
-        EnemySpawner[] spawners = FindObjectsOfType<EnemySpawner>();
-        foreach (EnemySpawner spawner in spawners)
+        TutorialEnemySpawner[] spawners = FindObjectsOfType<TutorialEnemySpawner>();
+        foreach (TutorialEnemySpawner spawner in spawners)
         {
             spawner.enabled = false;
             Debug.Log($"Disabled enemy spawner: {spawner.gameObject.name}");
@@ -230,7 +232,7 @@ public class TutorialManager : MonoBehaviour
 
         foreach (GameObject enemy in remainingEnemies)
         {
-            float randomDelay = Random.Range(0f, 3f);
+            float randomDelay = Random.Range(0f, 2f);
             Destroy(enemy, randomDelay);
         }
     }

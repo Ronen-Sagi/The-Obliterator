@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// Spawns enemy instances at a fixed interval at this spawner's position.
-public class EnemySpawner : MonoBehaviour
+public class TutorialEnemySpawner : MonoBehaviour
 {
     /// Prefab to instantiate as an enemy.
     [SerializeField] GameObject Enemy;

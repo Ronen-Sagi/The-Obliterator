@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3637066296512426681}
   - component: {fileID: 7835742068160205223}
   m_Layer: 0
-  m_Name: EnemySpawner
+  m_Name: TutorialEnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   Enemy: {fileID: 6483795241229547948, guid: 840d42078e9b5415c85f8263ed76bd4b, type: 3}
-  spawnInterval: 2
+  spawnInterval: 2.6
