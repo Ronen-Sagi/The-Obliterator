@@ -13,6 +13,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -9158107816125328076, guid: afdfe951f4dcd46c793fad8cf1c8fe2d, type: 3}
+      propertyPath: coinPrefab
+      value: 
+      objectReference: {fileID: 4344964394885324349, guid: 260bc4255e4e54b939aa5f90662d5644, type: 3}
+    - target: {fileID: -9158107816125328076, guid: afdfe951f4dcd46c793fad8cf1c8fe2d, type: 3}
       propertyPath: totalDrops
       value: 0
       objectReference: {fileID: 0}

@@ -51,7 +51,7 @@ public class TutorialManager : MonoBehaviour
 
     /// Indicates whether the power-up has already been used.
     private bool powerUpUsed = false;
-
+    
     /// Initializes counts, enables input, sets the first dot active, and displays the first instruction.
     void Start()
     {
@@ -197,12 +197,33 @@ public class TutorialManager : MonoBehaviour
     /// <param name="count">The number of enemies killed.</param>
     public void UpdateKillCount(int count)
     {
-        instructionText.text = $"Enemies killed:  {count}/10";
+        instructionText.text = $"Enemies killed: {count}/10";
 
         if (count >= 10)
         {
-            SceneManager.LoadScene("AftTutorialScene");
+            CancelInvoke(nameof(SpawnEnemies));
+            
+            instructionText.text = "Well done! Tutorial complete.";
+            RemoveRemainingEnemiesRandomly();
+            Invoke(nameof(TutorialEnd), 5f);
         }
+    }
+    private void RemoveRemainingEnemiesRandomly()
+    {
+        GameObject[] remainingEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemy in remainingEnemies)
+        {
+            float randomDelay = Random.Range(0f, 3f);
+            Destroy(enemy, randomDelay);
+        }
+    }
+
+
+    private void TutorialEnd()
+    {
+        SceneManager.LoadScene("AftTutorialScene");
+
     }
 
     /// Disables the space key input action when the component is deactivated.
