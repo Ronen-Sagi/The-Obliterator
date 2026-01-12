@@ -1,10 +1,10 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
-using System.Collections.Generic;
+using System. Collections. Generic;
 using UnityEngine.InputSystem;
 
-/// Coordinates the tutorial flow.
+/// Coordinates the tutorial flow. 
 public class TutorialManager : MonoBehaviour
 {
     /// UI text element displaying tutorial instructions.
@@ -55,7 +55,7 @@ public class TutorialManager : MonoBehaviour
     /// Initializes counts, enables input, sets the first dot active, and displays the first instruction.
     void Start()
     {
-        totalDots = tutorialDots.Count;
+        totalDots = tutorialDots. Count;
         totalEnemies = tutorialEnemies.Count;
 
         spaceKey.AddBinding("<Keyboard>/space");
@@ -77,7 +77,7 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    /// Called when a tutorial dot is touched. Advances to the next dot if correct,
+    /// Called when a tutorial dot is touched.  Advances to the next dot if correct,
     /// otherwise starts the enemy tutorial section.
     /// <param name="dotNumber">The 1-based index of the dot that was touched.</param>
     public void OnDotTouched(int dotNumber)
@@ -120,7 +120,7 @@ public class TutorialManager : MonoBehaviour
     }
 
     /// Handles logic when a tutorial enemy is destroyed,
-    /// activates the power-up phase.
+    /// activates the power-up phase. 
     public void OnEnemyDestroyed()
     {
         currentEnemyIndex++;
@@ -132,7 +132,7 @@ public class TutorialManager : MonoBehaviour
             tutorialEnemies[currentEnemyIndex].SetActive(true);
 
             instructionIndex += currentEnemyIndex;
-            if (instructionIndex < instructions.Count)
+            if (instructionIndex < instructions. Count)
             {
                 instructionText.text = instructions[instructionIndex];
             }
@@ -148,7 +148,7 @@ public class TutorialManager : MonoBehaviour
     /// Monitors input each frame to trigger the power-up when available and unused.
     private void Update()
     {
-        if (powerUpAvaliable && !powerUpUsed && spaceKey.WasPerformedThisFrame())
+        if (powerUpAvaliable && ! powerUpUsed && spaceKey.WasPerformedThisFrame())
         {
             powerUpUsed = true;
             ActivateSpeedPowerUp();
@@ -186,7 +186,7 @@ public class TutorialManager : MonoBehaviour
             }
         }
 
-        instructionText.text = "Kill 10 enemies to complete the tutorial! ";
+        instructionText.text = "Kill 10 enemies to complete the tutorial!  ";
         if (killCounter != null)
         {
             killCounter.ActivateCounter();
@@ -203,11 +203,27 @@ public class TutorialManager : MonoBehaviour
         {
             CancelInvoke(nameof(SpawnEnemies));
             
-            instructionText.text = "Well done! Tutorial complete.";
+            // Disable all enemy spawners to stop new enemies from spawning
+            DisableAllEnemySpawners();
+            
+            instructionText.text = "Well done! Tutorial complete. ";
             RemoveRemainingEnemiesRandomly();
             Invoke(nameof(TutorialEnd), 5f);
         }
     }
+    
+    /// Disables all enemy spawners in the scene to stop enemy spawning
+    private void DisableAllEnemySpawners()
+    {
+        // Find all EnemySpawner components in the scene and disable them
+        EnemySpawner[] spawners = FindObjectsOfType<EnemySpawner>();
+        foreach (EnemySpawner spawner in spawners)
+        {
+            spawner.enabled = false;
+            Debug.Log($"Disabled enemy spawner: {spawner.gameObject.name}");
+        }
+    }
+    
     private void RemoveRemainingEnemiesRandomly()
     {
         GameObject[] remainingEnemies = GameObject.FindGameObjectsWithTag("Enemy");

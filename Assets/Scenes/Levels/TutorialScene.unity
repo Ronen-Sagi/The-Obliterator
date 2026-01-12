@@ -1065,6 +1065,7 @@ MonoBehaviour:
   - {fileID: 1029368976}
   - {fileID: 212108730}
   killCounter: {fileID: 345039268}
+  enemySpawner: {fileID: 7835742068160205223, guid: cb281cd0f3b3842c4901627e84b4a676, type: 3}
 --- !u!4 &1647075314
 Transform:
   m_ObjectHideFlags: 0
